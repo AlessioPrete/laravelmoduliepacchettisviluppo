@@ -14,6 +14,7 @@
     },
     "require-dev": {
         "alessioprete/packagegenerator": "dev-master",
+        "alessioprete/baseapp": "dev-master",
         "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
@@ -63,7 +64,7 @@
     "prefer-stable": true,
     "repositories": [{
         "type": "path",
-        "url": "./packages/alessioprete/packagegenerator"
+        "url": "./packages/alessioprete/*"
     }
     ]
 }

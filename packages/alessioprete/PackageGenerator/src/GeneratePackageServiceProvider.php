@@ -2,12 +2,15 @@
 
 namespace alessioprete\PackageGenerator;
 
-use alessioprete\PackageGenerator\Console\Commands\CreatePackageCommand;
+use alessioprete\PackageGenerator\app\Console\Commands\CreatePackageCommand;
 use Illuminate\Support\ServiceProvider;
 
 class GeneratePackageServiceProvider extends ServiceProvider
 {
-    private $commands = CreatePackageCommand::class;
+    protected $commands = [
+        CreatePackageCommand::class
+        ];
+
     /**
      * Register services.
      *

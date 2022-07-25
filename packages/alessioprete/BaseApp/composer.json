@@ -1,6 +1,6 @@
 {
-    "name": "alessioprete/packagegenerator",
-    "description": "Genera cartelle file per un pacchetto",
+    "name": "alessioprete/baseapp",
+    "description": "Pacchetto Base",
     "minimum-stability": "dev",
     "license": "proprietary",
     "authors": [
@@ -13,13 +13,13 @@
     },
     "autoload": {
         "psr-4": {
-            "alessioprete\\PackageGenerator\\": "src"
+            "alessioprete\\BaseApp\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "alessioprete\\PackageGenerator\\GeneratePackageServiceProvider"
+                "alessioprete\\BaseApp\\BaseApp"
             ]
         }
     }
