@@ -13,5 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'web', 'prefix' => 'admin'], function ()
 {
-    Route::get('', function (){ return 'bavo scemo';});
+    Route::get('', function (){
+        $variabile = 'Bravo Scemo '.config('alessioprete.base.campoTest');
+        return $variabile;});
 });

@@ -5408,7 +5408,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/alessioprete/BaseApp",
-                "reference": "02dc295e0c686a9fe2c09ad87f84f1fb6cecc037"
+                "reference": "a24631178f20ea82f705cfdae48188d8529754ca"
             },
             "type": "library",
             "extra": {
@@ -5416,6 +5416,9 @@
                     "providers": [
                         "alessioprete\\BaseApp\\BaseApp"
                     ]
+                },
+                "branch-alias": {
+                    "dev-master": "0.1.0"
                 }
             },
             "autoload": {
