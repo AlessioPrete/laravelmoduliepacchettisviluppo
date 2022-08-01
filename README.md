@@ -25,3 +25,7 @@ Fanno parte del progetto principale e possono essere attivati o disattivati.
 
 ## Miei Pacchetti
 Sono scritti o modificati da me.
+
+## Pacchetti e librerie JS
+- [Barra di caricamento](https://github.com/CodeByZach/pace/)
+- 

@@ -24,6 +24,7 @@ return [
     'styles' => [
         // Example (the fonts above, loaded from CDN instead)
         // 'https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css',
+        'packages/alessioprete/base/css/bundle.css',
         'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic',
 
         // Example (load font-awesome instead of line-awesome):
@@ -77,4 +78,42 @@ return [
     // if it exists, otherwise it will load it from the default namespace ("alessioprete::").
 
     'view_namespace' => 'alessioprete::',
+
+    // Developer or company name. Shown in footer.
+    'developer_name' => 'Alessio Prete',
+
+    // Developer website. Link in footer. Type false if you want to hide it.
+    'developer_link' => 'https://www.alessioprete.com',
+
+    // Show powered by Laravel Backpack in the footer? true/false
+    'show_powered_by' => true,
+
+    // -------
+    // SCRIPTS
+    // -------
+
+    // JS files that are loaded in all pages, using Laravel's asset() helper
+    'scripts' => [
+        // Backstrap includes jQuery, Bootstrap, CoreUI, PNotify, Popper
+        'packages/alessioprete/base/js/bundle.js',
+
+        // examples (everything inside the bundle, loaded from CDN)
+        // 'https://code.jquery.com/jquery-3.4.1.min.js',
+        // 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js',
+        // 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
+        // 'https://unpkg.com/@coreui/coreui@2.1.16/dist/js/coreui.min.js',
+        // 'https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+        // 'https://unpkg.com/sweetalert/dist/sweetalert.min.js',
+        // 'https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js'
+
+        // examples (VueJS or React)
+        // 'https://unpkg.com/vue@2.4.4/dist/vue.min.js',
+        // 'https://unpkg.com/react@16/umd/react.production.min.js',
+        // 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+    ],
+
+    // JS files that are loaded in all pages, using Laravel's mix() helper
+    'mix_scripts' => [// file_path => manifest_directory_path
+        // 'js/app.js' => '',
+    ],
 ];

@@ -12,13 +12,13 @@
 </div>
 
 <footer class="app-footer sticky-footer">
-    @include('backpack::inc.footer')
+    @include('alessioprete::inc.footer')
 </footer>
 
 @yield('before_scripts')
 @stack('before_scripts')
 
-@include(backpack_view('inc.scripts'))
+@include(alessioprete_view('inc.scripts'))
 
 @yield('after_scripts')
 @stack('after_scripts')
