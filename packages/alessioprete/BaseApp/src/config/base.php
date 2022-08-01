@@ -85,7 +85,7 @@ return [
     // Developer website. Link in footer. Type false if you want to hide it.
     'developer_link' => 'https://www.alessioprete.com',
 
-    // Show powered by Laravel Backpack in the footer? true/false
+    // Show powered by Laravel alessioprete in the footer? true/false
     'show_powered_by' => true,
 
     // -------
@@ -112,9 +112,25 @@ return [
         // 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
     ],
 
-    // JS files that are loaded in all pages, using Laravel's mix() helper
-    'mix_scripts' => [// file_path => manifest_directory_path
-        // 'js/app.js' => '',
-    ],
     'setup_password_recovery_routes' => true,
+
+    // Alias for that middleware
+    'middleware_key' => 'admin',
+    // Note: It's recommended to use the alessioprete_middleware() helper everywhere, which pulls this key for you.
+
+    // The classes for the middleware to check if the visitor is an admin
+    // Can be a single class or an array of classes
+    'middleware_class' => [
+        \alessioprete\BaseApp\app\Http\Middleware\CheckIfAdmin::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        // \Backpack\CRUD\app\Http\Middleware\UseBackpackAuthGuardInsteadOfDefaultAuthGuard::class,
+    ],
+
+    // The prefix used in all base routes (the 'admin' in admin/dashboard)
+    // You can make sure all your URLs use this prefix by using the alessioprete_url() helper instead of url()
+    'route_prefix' => 'admin',
+
+    // The guard that protects the alessioprete admin panel.
+    // If null, the config.auth.defaults.guard value will be used.
+    'guard' => 'aprete',
 ];

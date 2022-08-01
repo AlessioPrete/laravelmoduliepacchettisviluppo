@@ -29,7 +29,7 @@ class BaseApp extends ServiceProvider
         $this->loadConfigs();
         $this->loadViewsWithFallbacks();
         $this->loadRoutesFrom(__DIR__.$this->route);
-
+        $this->registerMiddlewareGroup($this->app->router);
     }
 
     public function loadConfigs()
@@ -59,8 +59,8 @@ class BaseApp extends ServiceProvider
         // add the backpack_users password broker to the configuration
         app()->config['auth.passwords'] = app()->config['auth.passwords'] +
             [
-                'alessioprete' => [
-                    'provider'  => 'alessioprete',
+                'aprete' => [
+                    'provider'  => 'aprete',
                     'table'     => 'password_resets',
                     'expire'   => 60,
                     'throttle' => 600,
@@ -70,13 +70,12 @@ class BaseApp extends ServiceProvider
         // add the backpack_users guard to the configuration
         app()->config['auth.guards'] = app()->config['auth.guards'] +
             [
-                'alessioprete' => [
+                'aprete' => [
                     'driver'   => 'session',
-                    'provider' => 'alessioprete',
+                    'provider' => 'aprete',
                 ],
             ];
     }
-
     public function loadViewsWithFallbacks()
     {
         $customBaseFolder = resource_path('views/vendor/alessioprete/base');
@@ -92,5 +91,25 @@ class BaseApp extends ServiceProvider
     public function loadHelpers()
     {
         require_once __DIR__.'/helpers.php';
+    }
+    public function registerMiddlewareGroup(Router $router)
+    {
+        $middleware_key = config('alessioprete.base.middleware_key');
+        $middleware_class = config('alessioprete.base.middleware_class');
+
+        if (! is_array($middleware_class)) {
+            $router->pushMiddlewareToGroup($middleware_key, $middleware_class);
+            return;
+        }
+
+        foreach ($middleware_class as $middleware_class) {
+            $router->pushMiddlewareToGroup($middleware_key, $middleware_class);
+        }
+
+        // register internal backpack middleware for throttling the password recovery functionality
+        // but only if functionality is enabled by developer in config
+        if (config('alessioprete.base.setup_password_recovery_routes')) {
+            $router->aliasMiddleware('alessioprete.throttle.password.recovery', ThrottlePasswordRecovery::class);
+        }
     }
 }

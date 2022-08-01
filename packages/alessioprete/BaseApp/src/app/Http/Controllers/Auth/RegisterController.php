@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Validator;
+//use Validator; //Dovrebbe essere un trait
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -39,15 +40,10 @@ class RegisterController extends Controller
 
         // Where to redirect users after login / registration.
         $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo
-            : config('admin', 'dashboard');
+            : config('alessioprete.base.route_prefix', 'admin/dashboard');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+
     /**
      * Get the guard to be used during registration.
      *
@@ -55,20 +51,7 @@ class RegisterController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard();
-    }
-
-    protected function validator(array $data)
-    {
-        $user_model_fqn = config('auth.provider.users.model');
-        $user = new $user_model_fqn();
-        $users_table = $user->getTable();
-
-        return Validator::make($data, [
-            'name'                             => 'required|max:255',
-            'email'   => 'required|email|max:255|unique:'.$users_table,
-            'password'                         => 'required|min:6|confirmed',
-        ]);
+        return alessioprete_auth();
     }
 
     /**
@@ -79,7 +62,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user_model_fqn = config('auth.provider.users.model');
+        $user_model_fqn = config('alessioprete.base.user_model_fqn');
         $user = new $user_model_fqn();
 
         return $user->create([
@@ -115,8 +98,8 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         // if registration is closed, deny access
-        if (! config('backpack.base.registration_open')) {
-            abort(403, trans('backpack::base.registration_closed'));
+        if (! config('alessioprete.base.registration_open')) {
+            abort(403, 'Non è possibile registrare nuovi utenti, contattare l\'amministratore');
         }
 
         $this->validator($request->all())->validate();
@@ -127,5 +110,38 @@ class RegisterController extends Controller
         $this->guard()->login($user);
 
         return redirect($this->redirectPath());
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        $user_model_fqn = config('alessioprete.base.user_model_fqn');
+        $user = new $user_model_fqn();
+        $users_table = $user->getTable();
+
+        return Validator::make($data, [
+            'name'                             => 'required|max:255',
+            'email'   => 'required|email|max:255|unique:'.$users_table,
+            'password'                         => 'required|min:6|confirmed',
+        ]);
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : 'admin/dashboard';
     }
 }

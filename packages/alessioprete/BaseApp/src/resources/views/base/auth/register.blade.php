@@ -65,12 +65,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div>
-                                <button type="submit" class="btn btn-block btn-primary">
+                        <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
                                     Registrami
                                 </button>
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -78,7 +76,7 @@
             @if (config('alessioprete.base.setup_password_recovery_routes', true))
                 <div class="text-center"><a href="#">Password dimenticata</a></div>
             @endif
-            <div class="text-center"><a href="#">Login</a></div>
+            <div class="text-center"><a href="{{route('auth.login')}}">Login</a></div>
         </div>
     </div>
 @endsection

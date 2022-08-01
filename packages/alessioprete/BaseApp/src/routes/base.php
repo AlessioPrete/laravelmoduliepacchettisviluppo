@@ -1,5 +1,6 @@
 <?php
 
+use alessioprete\BaseApp\app\Http\Controllers\AdminController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'web', 'prefix' => 'admin'], function ()
+Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middleware' => config('alessioprete.base.web_middleware', 'web'), 'prefix' => 'admin'], function ()
 {
-    Route::get('', function (){
-        return view(alessioprete_view('layouts.plain'));});
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
+    Route::post('register', [RegisterController::class, 'register']);
+    Route::get('login', 'auth\LoginController@showLoginForm')->name('auth.login');
+    Route::post('login', 'auth\LoginController@login');
 
-});
-Route::group(['namespace' => 'alessioprete', 'middleware' => 'web'], function (){
-    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [RegisterController::class, 'create']);
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('', [AdminController::class, 'dashboard'])->name('home');
 });
 
