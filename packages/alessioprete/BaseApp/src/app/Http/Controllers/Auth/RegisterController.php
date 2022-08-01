@@ -5,7 +5,9 @@ namespace alessioprete\BaseApp\app\Http\Controllers\Auth;
 //use Backpack\CRUD\app\Library\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class RegisterController extends Controller
@@ -46,6 +48,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
     protected function validator(array $data)
     {
         $user_model_fqn = config('auth.provider.users.model');
@@ -91,7 +103,7 @@ class RegisterController extends Controller
 
         $this->data['title'] = 'Registrazione Utenti'; // set the page title
 
-        return view(backpack_view('auth.register'), $this->data);
+        return view(alessioprete_view('auth.register'), $this->data);
     }
 
     /**
@@ -115,15 +127,5 @@ class RegisterController extends Controller
         $this->guard()->login($user);
 
         return redirect($this->redirectPath());
-    }
-
-    /**
-     * Get the guard to be used during registration.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return backpack_auth();
     }
 }

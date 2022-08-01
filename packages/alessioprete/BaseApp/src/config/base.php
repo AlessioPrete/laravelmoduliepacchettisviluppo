@@ -116,4 +116,5 @@ return [
     'mix_scripts' => [// file_path => manifest_directory_path
         // 'js/app.js' => '',
     ],
+    'setup_password_recovery_routes' => true,
 ];

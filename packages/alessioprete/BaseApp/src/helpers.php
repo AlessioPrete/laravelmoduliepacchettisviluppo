@@ -25,3 +25,15 @@ if (! function_exists('alessioprete_view')) {
         return $returnView;
     }
 }
+if (! function_exists('alessioprete_authentication_column')) {
+    /**
+     * Return the username column name.
+     * The Laravel default (and Backpack default) is 'email'.
+     *
+     * @return string
+     */
+    function alessioprete_authentication_column()
+    {
+        return config('alessioprete.base.authentication_column', 'email');
+    }
+}
