@@ -102,3 +102,39 @@ if (! function_exists('alessioprete_user')) {
         return alessioprete_auth()->user();
     }
 }
+if (! function_exists('backpack_avatar_url')) {
+    /**
+     * Returns the avatar URL of a user.
+     *
+     * @param $user
+     * @return string
+     */
+    function alessioprete_avatar_url($user)
+    {
+        switch (config('alessioprete.base.avatar_type')) {
+            case 'gravatar':
+                if (alessioprete_users_have_email()) {
+                    return Gravatar::fallback(config('alessioprete.base.gravatar_fallback'))->get($user->email);
+                }
+                break;
+            default:
+                return method_exists($user, config('alessioprete.base.avatar_type')) ? $user->{config('alessioprete.base.avatar_type')}() : $user->{config('alessioprete.base.avatar_type')};
+                break;
+        }
+    }
+}
+
+if (! function_exists('alessioprete_users_have_email')) {
+    /**
+     * Check if the email column is present on the user table.
+     *
+     * @return string
+     */
+    function alessioprete_users_have_email()
+    {
+        $user_model_fqn = config('alessioprete.base.user_model_fqn');
+        $user = new $user_model_fqn();
+
+        return \Schema::hasColumn($user->getTable(), 'email');
+    }
+}

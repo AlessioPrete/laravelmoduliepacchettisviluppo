@@ -29,6 +29,7 @@ return [
 
         // Example (load font-awesome instead of line-awesome):
         // 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css',
+
     ],
 
     /*
@@ -133,4 +134,44 @@ return [
     // The guard that protects the alessioprete admin panel.
     // If null, the config.auth.defaults.guard value will be used.
     'guard' => 'aprete',
+
+    // ----
+    // BODY
+    // ----
+
+    // Body element classes.
+    'body_class' => 'app aside-menu-fixed sidebar-lg-show',
+    // Try sidebar-hidden, sidebar-fixed, sidebar-compact, sidebar-lg-show
+
+    // Horizontal navbar classes. Helps make the admin panel look similar to your project's design.
+    'header_class' => 'app-header bg-light border-0 navbar',
+    // For background colors use: bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white
+    // For links to be visible on different background colors use: "navbar-dark", "navbar-light", "navbar-color"
+
+    // What kind of avatar will you like to show to the user?
+    // Default: gravatar (automatically use the gravatar for their email)
+    // Other options:
+    // - null (generic image with their first letter)
+    // - example_method_name (specify the method on the User model that returns the URL)
+    'avatar_type' => 'gravatar',
+
+    // Gravatar fallback options are 'identicon', 'monsterid', 'wavatar', 'retro', 'robohash', 'blank'
+    // 'blank' will keep the generic image with the user first letter
+    'gravatar_fallback' => 'blank',
+
+    // Sidebar element classes.
+    'sidebar_class' => 'sidebar sidebar-pills bg-light',
+    // Remove "sidebar-transparent" for standard sidebar look
+    // Try "sidebar-light" or "sidebar-dark" for dark/light links
+    // You can also add a background class like bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan
+
+    // ------
+    // FOOTER
+    // ------
+
+    // Footer element classes.
+    'footer_class' => 'app-footer d-print-none',
+    // hide it with d-none
+    // change background color with bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white
+
 ];

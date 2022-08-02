@@ -30,6 +30,7 @@ class BaseApp extends ServiceProvider
         $this->loadViewsWithFallbacks();
         $this->loadRoutesFrom(__DIR__.$this->route);
         $this->registerMiddlewareGroup($this->app->router);
+        $this->publishFiles();
     }
 
     public function loadConfigs()
@@ -111,5 +112,11 @@ class BaseApp extends ServiceProvider
         if (config('alessioprete.base.setup_password_recovery_routes')) {
             $router->aliasMiddleware('alessioprete.throttle.password.recovery', ThrottlePasswordRecovery::class);
         }
+    }
+
+    public function publishFiles()
+    {
+        $alessioprete_public_asset = [__DIR__.'/public' => public_path()];
+        $this->publishes($alessioprete_public_asset, 'asset');
     }
 }

@@ -22,5 +22,9 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
+
+    Route::get('sandbox', function (){
+        return view(alessioprete_view('sandbox'));
+    });
 });
 

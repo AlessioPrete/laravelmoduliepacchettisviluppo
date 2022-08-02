@@ -11,7 +11,8 @@
     ],
     "require": {
         "laravel/framework": "^9.0|^8.26",
-        "prologue/alerts": "^1.0|^0.4"
+        "prologue/alerts": "^1.0|^0.4",
+        "creativeorange/gravatar": "~1.0"
     },
     "autoload": {
         "psr-4": {
