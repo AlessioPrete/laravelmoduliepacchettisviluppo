@@ -1,6 +1,7 @@
 @import "@coreui/coreui/scss/functions";
 @import "@coreui/coreui/scss/variables";
 @import "@coreui/coreui/scss/mixins";
+$enable-ltr: true; /* stylelint-disable-line scss/dollar-variable-default */
 
 .wrapper {
     width: 100%;

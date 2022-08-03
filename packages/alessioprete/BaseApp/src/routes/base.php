@@ -26,5 +26,8 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('sandbox', function (){
         return view(alessioprete_view('sandbox'));
     });
+    Route::get('iconmoon', function (){
+        return view(alessioprete_view('iconmoon'));
+    });
 });
 

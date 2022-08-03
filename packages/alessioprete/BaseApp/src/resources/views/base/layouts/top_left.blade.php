@@ -19,7 +19,7 @@
 
        @yield('before_breadcrumbs_widgets')
 
-       @includeWhen(isset($breadcrumbs), backpack_view('inc.breadcrumbs'))
+{{--       @includeWhen(isset($breadcrumbs), backpack_view('inc.breadcrumbs'))--}}
 
        @yield('after_breadcrumbs_widgets')
 

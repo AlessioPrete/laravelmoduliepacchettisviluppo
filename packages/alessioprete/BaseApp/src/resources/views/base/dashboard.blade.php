@@ -1,4 +1,4 @@
-@extends(alessioprete_view('blank'))
+@extends(alessioprete_view('layouts.coreui'))
 
 {{--@php--}}
 {{--    $widgets['before_content'][] = [--}}
