@@ -3,7 +3,7 @@
 <head>
 @include(alessioprete_view('inc.head'))
 </head>
-<body class="app flex-row align-items-center">
+<body class="bg-light min-vh-100 d-flex flex-row align-items-center">
 
 @yield('header')
 

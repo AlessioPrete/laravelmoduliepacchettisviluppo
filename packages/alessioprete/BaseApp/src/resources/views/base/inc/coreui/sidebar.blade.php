@@ -11,48 +11,7 @@
         </ul>
         <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
-    <div class="{{ config('alessioprete.base.sidebar_class') }}">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <nav class="sidebar-nav overflow-hidden">
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="nav">
-          <!-- <li class="nav-title">Amministrazione</li> -->
-          <!-- ================================================ -->
-          <!-- ==== Recommended place for admin menu items ==== -->
-          <!-- ================================================ -->
-
-          @include(alessioprete_view('inc.sidebar_content'))
-
-          <!-- ======================================= -->
-          <!-- <li class="divider"></li> -->
-          <!-- <li class="nav-title">Entries</li> -->
-        </ul>
-      </nav>
-      <!-- /.sidebar -->
-    </div>
 @endif
-
-@push('before_scripts')
-  <script type="text/javascript">
-    // Save default sidebar class
-    let sidebarClass = (document.body.className.match(/sidebar-(sm|md|lg|xl)-show/) || ['sidebar-lg-show'])[0];
-    let sidebarTransition = function(value) {
-        document.querySelector('.app-body > .sidebar').style.transition = value || '';
-    };
-
-    // Recover sidebar state
-    let sessionState = sessionStorage.getItem('sidebar-collapsed');
-    if (sessionState) {
-      // disable the transition animation temporarily, so that if you're browsing across
-      // pages with the sidebar closed, the sidebar does not flicker into the view
-      sidebarTransition("none");
-      document.body.classList.toggle(sidebarClass, sessionState === '1');
-
-      // re-enable the transition, so that if the user clicks the hamburger menu, it does have a nice transition
-      setTimeout(sidebarTransition, 100);
-    }
-  </script>
-@endpush
 
 @push('after_scripts')
   <script>

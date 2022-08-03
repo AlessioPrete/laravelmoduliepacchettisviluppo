@@ -35,3 +35,10 @@
         Pagine
     </a>
 </li>
+<li class="nav-title">Impostazioni</li>
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="icon-user nav-icon"></i>
+        Utenti
+    </a>
+</li>
