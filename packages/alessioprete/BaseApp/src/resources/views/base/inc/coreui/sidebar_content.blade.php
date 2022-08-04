@@ -36,9 +36,24 @@
     </a>
 </li>
 <li class="nav-title">Impostazioni</li>
-<li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="icon-user nav-icon"></i>
-        Utenti
-    </a>
+<li class="nav-group"><a class="nav-link nav-group-toggle" href="#">Autorizzazioni</a>
+    <ul class="nav-group-items">
+        <li class="nav-item">
+            <a href="{{route('utenti')}}" class="nav-link">
+                <i class="icon-user nav-icon"></i>
+                Utenti
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                Ruoli
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                Permessi
+            </a>
+        </li>
+    </ul>
 </li>
+

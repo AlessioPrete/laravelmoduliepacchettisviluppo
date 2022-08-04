@@ -241,6 +241,7 @@
 <script src="{{asset('packages/alessioprete/base/js/bundle.js')}}"></script>
 <script src="{{asset('packages/alessioprete/base/js/liga.js')}}">
 </script>
+@yield('script')
 <script>
     //define some sample data
     var tabledata = [
