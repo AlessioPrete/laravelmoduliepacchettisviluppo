@@ -2,6 +2,7 @@
 
 namespace alessioprete\BaseApp\app\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
@@ -30,7 +31,6 @@ class AdminController extends Controller
 
         return view(alessioprete_view('dashboard'), $this->data);
     }
-
     /**
      * Redirect to the dashboard.
      *
@@ -40,5 +40,11 @@ class AdminController extends Controller
     {
         // The '/admin' route is not to be used as a page, because it breaks the menu's active state.
         return redirect(alessioprete_url('dashboard'));
+    }
+
+    public function usersShow()
+    {
+        $utenti = User::all();
+        return view(alessioprete_view('users'), compact('utenti'));
     }
 }

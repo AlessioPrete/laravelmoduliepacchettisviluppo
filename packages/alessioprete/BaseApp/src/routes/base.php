@@ -21,6 +21,7 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::post('login', 'auth\LoginController@login');
     Route::get('logout', 'auth\LoginController@logout')->name('logout');
 
+    Route::get('users', [AdminController::class, 'usersShow'])->name('ustenti');
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
 

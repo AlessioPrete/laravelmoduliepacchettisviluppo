@@ -14,28 +14,22 @@
 </head>
 <body>
     @include(alessioprete_view('inc.coreui.sidebar'))
-<div class="wrapper d-flex flex-column min-vh-100 bg-light">
-    @include(alessioprete_view('inc.coreui.header'))
-    <div class="body flex-grow-1 px-3">
-        <div class="container-lg">
-            @yield('content')
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        @include(alessioprete_view('inc.coreui.header'))
+        <div class="body flex-grow-1 px-3">
+            <div class="container-lg">
+                @yield('content')
+            </div>
         </div>
+        <footer class="footer">
+            <div><a href="https://coreui.io">CoreUI </a><a href="https://coreui.io">Bootstrap Admin Template</a> &copy; 2022 creativeLabs.</div>
+            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+        </footer>
     </div>
-    <footer class="footer">
-        <div><a href="https://coreui.io">CoreUI </a><a href="https://coreui.io">Bootstrap Admin Template</a> &copy; 2022 creativeLabs.</div>
-        <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
-    </footer>
-</div>
-@yield('content')
-
 <!-- CoreUI and necessary plugins-->
 <script src="{{asset('packages/alessioprete/base/js/bundle.js')}}"></script>
 <script src="{{asset('packages/alessioprete/base/js/liga.js')}}">
 </script>
-    <script>
-        $(document).ready(function (){
-           $('#example').DataTable();
-        });
-    </script>
+@yield('script')
 </body>
 </html>
