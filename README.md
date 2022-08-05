@@ -25,7 +25,17 @@ Fanno parte del progetto principale e possono essere attivati o disattivati.
 
 ## Miei Pacchetti
 Sono scritti o modificati da me.
+- BaseApp permette la gestione del login, registrazione e Ruoli, implementare anche il crud.
+- 
 
 ## Pacchetti e librerie JS
 - [Barra di caricamento](https://github.com/CodeByZach/pace/)
-- 
+- [Luxon Gesione Date in Javascript](https://moment.github.io/luxon/#/tour)
+- [Tabulator Gestione Tabelle](http://tabulator.info/docs/5.3/quickstart)
+- [CoreUI Interfaccia grafica](https://coreui.io/demos/bootstrap/4.0/free/base/breadcrumb.html)
+- [Bootstrap Table](https://examples.bootstrap-table.com/#welcome.html)
+
+##Pacchetti Laravel 
+- [Gravatar Gestione immagini Avatar](https://it.gravatar.com/)
+- [Media Librari Mediable](https://plankdesign.com/en/stories/introducing-laravel-mediable/)
+- [Spatie Permission](https://spatie.be/docs/laravel-permission/v5/introduction)

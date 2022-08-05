@@ -1,4 +1,30 @@
 @extends(alessioprete_view('layouts.coreui'))
 @section('content')
-    Crea utente
+    <div class="container-lg">
+        <div class="card">
+            <div class="card-body row">
+                <form action="">
+                    <div class="form-group">
+                        <label for="" class="control-label">Nome</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">Password</label>
+                        <input type="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">Conferma Email</label>
+                        <input type="password" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <x-input>
+                @php $label = 'ciccio'; @endphp
+            </x-input>
+        </div>
+    </div>
 @endsection

@@ -4,6 +4,8 @@ namespace alessioprete\BaseApp;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use alessioprete\BaseApp\app\View\Components\Forms\input;
 
 class BaseApp extends ServiceProvider
 {
@@ -31,6 +33,7 @@ class BaseApp extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.$this->route);
         $this->registerMiddlewareGroup($this->app->router);
         $this->publishFiles();
+        Blade::component('input', input::class);
     }
 
     public function loadConfigs()
