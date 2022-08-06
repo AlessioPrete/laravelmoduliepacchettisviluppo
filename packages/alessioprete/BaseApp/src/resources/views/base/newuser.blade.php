@@ -22,8 +22,9 @@
                     </div>
                 </form>
             </div>
-            <x-input>
-                @php $label = 'ciccio'; @endphp
+            <x-input label="label">
+                <x-slot name="title">titolo</x-slot>
+                <h2>Questo è lo slot</h2>
             </x-input>
         </div>
     </div>
