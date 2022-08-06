@@ -20,12 +20,10 @@
                         <label for="" class="control-label">Conferma Email</label>
                         <input type="password" class="form-control">
                     </div>
+                    <x-input label="label" field="prova"></x-input>
                 </form>
             </div>
-            <x-input label="label">
-                <x-slot name="title">titolo</x-slot>
-                <h2>Questo è lo slot</h2>
-            </x-input>
+
         </div>
     </div>
 @endsection

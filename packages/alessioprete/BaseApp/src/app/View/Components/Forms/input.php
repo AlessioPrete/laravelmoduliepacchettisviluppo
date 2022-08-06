@@ -7,14 +7,18 @@ use Illuminate\View\Component;
 class input extends Component
 {
     public $label;
+    public $field;
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $label
+     * @param $field
      */
-    public function __construct($label)
+    public function __construct($label, $field)
     {
         $this->label = $label;
+        $this->field = $field;
     }
 
     /**
