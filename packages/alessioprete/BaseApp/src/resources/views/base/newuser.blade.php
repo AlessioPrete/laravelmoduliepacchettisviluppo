@@ -4,23 +4,10 @@
         <div class="card">
             <div class="card-body row">
                 <form action="">
-                    <div class="form-group">
-                        <label for="" class="control-label">Nome</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Email</label>
-                        <input type="email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Password</label>
-                        <input type="password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Conferma Email</label>
-                        <input type="password" class="form-control">
-                    </div>
-                    <x-input label="label" field="prova"></x-input>
+                    <x-input label="Nome" field="name"></x-input>
+                    <x-input label="Email" field="email" type="email"></x-input>
+                    <x-input label="Password" field="password" type="password"></x-input>
+                    <x-input label="Conferma Password" field="confirmpassword" type="password"></x-input>
                 </form>
             </div>
 
