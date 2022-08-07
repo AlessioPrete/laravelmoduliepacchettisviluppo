@@ -8,6 +8,9 @@ class input extends Component
 {
     public $label;
     public $field;
+    public $type;
+    public $value;
+    public $ph;
 
     /**
      * Create a new component instance.
@@ -15,10 +18,13 @@ class input extends Component
      * @param $label
      * @param $field
      */
-    public function __construct($label, $field)
+    public function __construct($label, $field, $type = 'text', $value = '', $ph = '...')
     {
         $this->label = $label;
         $this->field = $field;
+        $this->type = $type;
+        $this->value = $value;
+        $this->ph = $ph;
     }
 
     /**

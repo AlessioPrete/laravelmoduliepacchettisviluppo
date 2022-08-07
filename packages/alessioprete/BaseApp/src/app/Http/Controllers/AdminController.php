@@ -3,7 +3,9 @@
 namespace alessioprete\BaseApp\app\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -46,5 +48,25 @@ class AdminController extends Controller
     {
         $utenti = User::all();
         return view(alessioprete_view('users'), compact('utenti'));
+    }
+
+    public function creaUtente()
+    {
+        return view(alessioprete_view('newuser'));
+    }
+
+    public function registraUtente(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'unique:users']
+        ]);
+        $registra = new User();
+        $registra->name = $request->name;
+        $registra->email = $request->email;
+        $registra->password = Hash::make($request->password);
+        $registra->save();
+
+        return redirect()->back();
     }
 }
