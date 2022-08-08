@@ -5,9 +5,9 @@
         </button><a class="header-brand d-md-none" href="#">
             <strong>AP</strong>Back</a>
         <ul class="header-nav d-none d-md-flex">
-            <li class="nav-item"><a class="nav-link" href="#">Menu1</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Menu2</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Menu3</a></li>
+{{--            <li class="nav-item"><a class="nav-link" href="#">Menu1</a></li>--}}
+{{--            <li class="nav-item"><a class="nav-link" href="#">Menu2</a></li>--}}
+{{--            <li class="nav-item"><a class="nav-link" href="#">Menu3</a></li>--}}
         </ul>
         <ul class="header-nav ms-auto">
         </ul>

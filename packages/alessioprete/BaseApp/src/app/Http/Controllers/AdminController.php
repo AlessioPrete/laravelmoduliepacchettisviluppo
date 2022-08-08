@@ -78,4 +78,46 @@ class AdminController extends Controller
             return redirect('admin/users');
         }
     }
+
+    public function eliminaUtente(Request $request)
+    {
+        User::find($request->deleteid)->delete();
+        return back()->with(['success' => 'Eliminato con successo']);
+    }
+
+    public function editUtente($id)
+    {
+        $user = User::find($id);
+        return view(alessioprete_view('edituser'), compact('user'));
+    }
+
+    public function editUtenteStore(Request $request)
+    {
+        if (isset($request->password)) {
+            $valida = Validator::make($request->all(),[
+                'name' => 'required',
+                'email' => ['required', 'unique:users', 'email'],
+                'password' => 'required|confirmed',
+                'password_confirmation' => 'required|same:password'
+            ]);
+            if ($valida->fails()) {
+                return redirect()->back()->withErrors($valida)->withInput();
+            }
+            else {
+                $registra = new User();
+                $registra->name = $request->name;
+                $registra->email = $request->email;
+                $registra->password = Hash::make($request->password);
+                $registra->save();
+
+                return redirect('admin/users');
+            }
+        }
+        else {
+            $valida = Validator::make($request->all(),[
+                'name' => 'required',
+                'email' => ['required', 'unique:users', 'email']
+            ]);
+        }
+    }
 }

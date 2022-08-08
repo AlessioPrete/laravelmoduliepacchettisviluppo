@@ -16,6 +16,7 @@ Per la realizzazione ho usato alcune librerie e pacchetti già disponibili.
 - [DebugBar](https://github.com/barryvdh/laravel-debugbar).
 - Backpack a cui mi sono ispirato [Sito ufficiale](https://backpackforlaravel.com/).
 - [Guida di di riferimento per i pacchetti](https://laravelpackage.com/#reasons-to-develop-a-package)
+- [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
 Ho creato un progetto completo su github e sottoprogetti come moduli e pacchetti.
 
