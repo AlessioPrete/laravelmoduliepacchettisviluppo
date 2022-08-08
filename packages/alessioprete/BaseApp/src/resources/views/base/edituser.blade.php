@@ -15,4 +15,11 @@
             </div>
         </div>
     </div>
+    <ul>
+        <li class="btn btn-primary"></li>
+        <li class="btn btn-primary"></li>
+        <li class="btn btn-primary"></li>
+        <li class="btn btn-primary"></li>
+        <li class="btn btn-primary"></li>
+    </ul>
 @endsection

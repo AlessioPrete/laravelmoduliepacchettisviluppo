@@ -2,10 +2,13 @@
 
 namespace alessioprete\BaseApp;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use alessioprete\BaseApp\app\View\Components\Forms\input;
+
 
 class BaseApp extends ServiceProvider
 {
@@ -121,5 +124,28 @@ class BaseApp extends ServiceProvider
     {
         $alessioprete_public_asset = [__DIR__.'/public' => public_path()];
         $this->publishes($alessioprete_public_asset, 'asset');
+
+        $this->publishes([base_path().'/vendor/spatie/laravel-permission/config/permission.php' => config_path('permission.php'),], 'config');
+        $this->publishes([
+            base_path().'/vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName('create_permission_tables.php'),
+        ], 'migrations');
+    }
+    /**
+     * Returns existing migration file if found, else uses the current timestamp.
+     *
+     * @return string
+     */
+    protected function getMigrationFileName($migrationFileName): string
+    {
+        $timestamp = date('Y_m_d_His');
+
+        $filesystem = $this->app->make(Filesystem::class);
+
+        return Collection::make($this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR)
+            ->flatMap(function ($path) use ($filesystem, $migrationFileName) {
+                return $filesystem->glob($path.'*_'.$migrationFileName);
+            })
+            ->push($this->app->databasePath()."/migrations/{$timestamp}_{$migrationFileName}")
+            ->first();
     }
 }
