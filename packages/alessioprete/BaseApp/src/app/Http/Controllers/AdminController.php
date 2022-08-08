@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -57,16 +58,24 @@ class AdminController extends Controller
 
     public function registraUtente(Request $request)
     {
-        $validated = $request->validate([
+        $valida = Validator::make($request->all(),[
             'name' => 'required',
-            'email' => ['required', 'unique:users']
+            'email' => ['required', 'unique:users', 'email'],
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required|same:password'
         ]);
-        $registra = new User();
-        $registra->name = $request->name;
-        $registra->email = $request->email;
-        $registra->password = Hash::make($request->password);
-        $registra->save();
 
-        return redirect()->back();
+        if ($valida->fails()) {
+            return redirect()->back()->withErrors($valida)->withInput();
+        }
+        else {
+            $registra = new User();
+            $registra->name = $request->name;
+            $registra->email = $request->email;
+            $registra->password = Hash::make($request->password);
+            $registra->save();
+
+            return redirect('admin/users');
+        }
     }
 }
