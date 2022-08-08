@@ -3,8 +3,9 @@
     <div class="container-lg">
         <div class="card">
             <div class="card-body row">
-                <form action="#" method="POST">
+                <form action="{{route('edituserstore')}}" method="POST">
                     @csrf
+                    <input type="hidden" value="{{$user->id}}" name="id">
                     <x-input label="Nome" field="name" ph="Nome" :value="$user->name"></x-input>
                     <x-input label="Email" field="email" type="email" ph="e-mail" :value="$user->email"></x-input>
                     <x-input label="Password" field="password" type="password" ph="password"></x-input>

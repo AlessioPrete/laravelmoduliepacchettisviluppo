@@ -104,7 +104,7 @@ class AdminController extends Controller
                 return redirect()->back()->withErrors($valida)->withInput();
             }
             else {
-                $registra = new User();
+                $registra = User::find($request->id);
                 $registra->name = $request->name;
                 $registra->email = $request->email;
                 $registra->password = Hash::make($request->password);
@@ -113,11 +113,24 @@ class AdminController extends Controller
                 return redirect('admin/users');
             }
         }
+
         else {
             $valida = Validator::make($request->all(),[
                 'name' => 'required',
                 'email' => ['required', 'unique:users', 'email']
             ]);
+
+            if ($valida->fails()) {
+                return redirect()->back()->withErrors($valida)->withInput();
+            }
+            else {
+                $registra = User::find($request->id);
+                $registra->name = $request->name;
+                $registra->email = $request->email;
+                $registra->save();
+
+                return redirect('admin/users');
+            }
         }
     }
 }

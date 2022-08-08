@@ -26,6 +26,7 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::post('registrautente', [AdminController::class, 'registraUtente'])->name('registrautente');
     Route::post('eliminautente', [AdminController::class, 'eliminaUtente'])->name('eliminautente');
     Route::get('editutente/{id}', [AdminController::class, 'editUtente'])->name('editUser');
+    Route::post('edituserstore', [AdminController::class, 'editUtenteStore'])->name('edituserstore');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
