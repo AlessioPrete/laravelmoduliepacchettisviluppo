@@ -45,8 +45,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
-                Ruoli
+            <a href="{{route('roles')}}" class="nav-link">
+                <i class="icon-users nav-icon"></i> Ruoli
             </a>
         </li>
         <li class="nav-item">

@@ -28,6 +28,8 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('editutente/{id}', [AdminController::class, 'editUtente'])->name('editUser');
     Route::post('edituserstore', [AdminController::class, 'editUtenteStore'])->name('edituserstore');
 
+    Route::get('roles', function (){ return view(alessioprete_view('roles'));})->name('roles');
+
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
 
