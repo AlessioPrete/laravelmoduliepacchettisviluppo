@@ -1,7 +1,7 @@
 @extends(alessioprete_view('layouts.coreui'))
 @section('content')
     <div class="btn-toolbar mb-2">
-        <a class="btn btn-primary" href="{{route('creautente')}}"><i class="icon icon-plus1"></i> Nuovo Ruolo</a>
+        <a class="btn btn-primary" href="{{route('newrole')}}"><i class="icon icon-plus1"></i> Nuovo Ruolo</a>
     </div>
     <div class="container-lg">
         <div class="row">
@@ -16,6 +16,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($ruoli as $ruolo)
+                    <tr>
+                        <td>{{$ruolo->id}}</td>
+                        <td>{{$ruolo->name}}</td>
+                        <td>{{$ruolo->users_count}}</td>
+                        <td></td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-warning" href="#">Modifica</a>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma">Elimina</button>
+                        </td>
+
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

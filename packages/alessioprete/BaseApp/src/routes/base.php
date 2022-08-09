@@ -2,6 +2,7 @@
 
 use alessioprete\BaseApp\app\Http\Controllers\AdminController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
+use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,13 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('editutente/{id}', [AdminController::class, 'editUtente'])->name('editUser');
     Route::post('edituserstore', [AdminController::class, 'editUtenteStore'])->name('edituserstore');
 
-    Route::get('roles', function (){ return view(alessioprete_view('roles'));})->name('roles');
+    Route::get('roles', [RolePermissionController::class, 'roleShow'])->name('roles');
+    Route::get('newrole', [RolePermissionController::class, 'roleNew'])->name('newrole');
+    Route::post('newrolestore', [RolePermissionController::class, 'roleNewStore'])->name('newrolestore');
+    Route::get('permission', [RolePermissionController::class, 'permissionShow'])->name('permission');
+    Route::get('newpermission', [RolePermissionController::class, 'permissionNew'])->name('newpermission');
+    Route::post('newpermissionstore', [RolePermissionController::class, 'permissionNewStore'])->name('newpermissionstore');
+    Route::post('deletepermission', [RolePermissionController::class, 'permissionDelete'])->name('permissiondelete');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');

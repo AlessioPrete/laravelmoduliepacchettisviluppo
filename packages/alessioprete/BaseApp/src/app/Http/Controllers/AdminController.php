@@ -47,7 +47,7 @@ class AdminController extends Controller
 
     public function usersShow()
     {
-        $utenti = User::all();
+        $utenti = User::with('roles')->get();
         return view(alessioprete_view('users'), compact('utenti'));
     }
 

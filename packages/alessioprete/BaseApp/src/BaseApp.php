@@ -119,7 +119,6 @@ class BaseApp extends ServiceProvider
             $router->aliasMiddleware('alessioprete.throttle.password.recovery', ThrottlePasswordRecovery::class);
         }
     }
-
     public function publishFiles()
     {
         $alessioprete_public_asset = [__DIR__.'/public' => public_path()];
@@ -130,11 +129,6 @@ class BaseApp extends ServiceProvider
             base_path().'/vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName('create_permission_tables.php'),
         ], 'migrations');
     }
-    /**
-     * Returns existing migration file if found, else uses the current timestamp.
-     *
-     * @return string
-     */
     protected function getMigrationFileName($migrationFileName): string
     {
         $timestamp = date('Y_m_d_His');

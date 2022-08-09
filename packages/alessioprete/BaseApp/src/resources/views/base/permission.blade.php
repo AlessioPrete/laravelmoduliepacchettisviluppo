@@ -1,7 +1,7 @@
 @extends(alessioprete_view('layouts.coreui'))
 @section('content')
     <div class="btn-toolbar mb-2">
-        <a class="btn btn-primary" href="{{route('creautente')}}"><i class="icon icon-plus1"></i> Nuovo Utente</a>
+        <a class="btn btn-primary" href="{{route('newpermission')}}"><i class="icon icon-plus1"></i> Nuovo Permesso</a>
     </div>
     <div class="container-lg">
         <div class="row">
@@ -10,36 +10,23 @@
                 <tr>
                     <th>id</th>
                     <th>Nome</th>
-                    <th>Email</th>
-                    <th>Ruoli</th>
-                    <th>Permessi Extra</th>
                     <th class="text-end">Azioni</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($utenti as $user)
-                    <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>
-                            @foreach($user->roles as $role)
-                                <span class="badge-sm text-bg-info">{{$role->name}}</span>
-                            @endforeach
-                        </td>
-                        <td></td>
-                        <td class="text-end">
-                            <a class="btn btn-sm btn-warning" href="{{route('editUser', $user->id)}}">Modifica</a>
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$user->name}}', '{{$user->id}}')">Elimina</button>
-                        </td>
-                    </tr>
-                @endforeach
+                    @foreach($permessi as $permesso)
+                        <tr>
+                            <td>{{$permesso->id}}</td>
+                            <td>{{$permesso->name}}</td>
+                            <td class="text-end">
+                                <a class="btn btn-sm btn-warning" href="#">Modifica</a>
+                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$permesso->id}}','{{$permesso->name}}')">Elimina</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-{{--        <div class="row">--}}
-{{--            @dd($utenti)--}}
-{{--        </div>--}}
     </div>
     <!-- Modal -->
     <div class="modal fade" id="eliminaConferma" tabindex="-1" aria-labelledby="eliminaConfermaLabel" aria-hidden="true">
@@ -49,10 +36,10 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('eliminautente')}}" id="delete" method="POST">
+                <form action="{{route('permissiondelete')}}" id="delete" method="POST">
                     @csrf
                 <div class="modal-body">
-                    Confermi l'eliminazione dell'utente <span id="username"></span>
+                    Confermi l'eliminazione del permesso <span id="permesso"></span>
                         <input type="hidden" value="" id="deleteid" name="deleteid">
                 </div>
                 <div class="modal-footer">
@@ -69,8 +56,8 @@
     <script>
         function transferdata(a,b)
         {
-            $('#username').html(a);
-            $('#deleteid').val(b);
+            $('#permesso').html(b);
+            $('#deleteid').val(a);
             console.log('utente: '+a+'| userid: '+b);
         }
     </script>
