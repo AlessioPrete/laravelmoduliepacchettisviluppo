@@ -37,7 +37,7 @@ class RolePermissionController extends Controller
 
     public function permissionNewStore(Request $request)
     {
-        Permission::create(['name' => $request->name]);
+        Permission::create(['name' => $request->name, 'guard_name' => 'aprete']);
         return redirect('admin/permission');
     }
 
@@ -49,10 +49,9 @@ class RolePermissionController extends Controller
 
     public function roleShow()
     {
-        $permessi = Permission::all();
-        $ruoli = Role::withCount('users')->get();
-        return view(alessioprete_view('auth.roles.roles'), compact('ruoli'));
-        //return dd($ruoli);
+        $ruoli = Role::withCount('users')->with('permissions')->get();
+        //return view(alessioprete_view('auth.roles.roles'), compact('ruoli'));
+        return dd($ruoli);
     }
 
     public function roleNew()
@@ -63,14 +62,17 @@ class RolePermissionController extends Controller
 
     public function roleNewStore(Request $request)
     {
-        Role::create(['name' => $request->name, 'guard_name' => 'aprete']);
+        $ruolo = Role::create(['name' => $request->name, 'guard_name' => 'aprete']);
+        $ruolo->syncPermissions($request->role);
         return redirect('admin/roles');
     }
 
     public function roleEdit($id)
     {
         $role = Role::find($id);
-        return view(alessioprete_view('auth.roles.editrole'), compact('role'));
+        $check = $role->permissions;
+        $permessi = Permission::all();
+        return view(alessioprete_view('auth.roles.editrole'), compact('role'), compact('permessi', 'check'));
     }
 
     public function roleEditStore(Request $request)

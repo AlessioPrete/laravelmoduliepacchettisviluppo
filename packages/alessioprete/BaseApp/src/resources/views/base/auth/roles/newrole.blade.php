@@ -7,14 +7,16 @@
                     @csrf
                     <x-input label="Ruolo" field="name" ph="Nome"></x-input>
                     @if(isset($permessi))
-                        <div class="card mb-2 d-grid gap-3">
+                        <div class="card mb-2 gap-3">
                             <div class="card-header">Permessi</div>
                             <div class="card-body">
-                                @foreach($permessi as $permesso)
-                                    <div class="col-3">
-                                        <x-checkbox label="{{$permesso->name}}"></x-checkbox>
-                                    </div>
-                                @endforeach
+                                <div class="row">
+                                    @foreach($permessi as $permesso)
+                                        <div class="col-3">
+                                            <x-checkbox label="{{$permesso->name}}"></x-checkbox>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     @endif
