@@ -23,8 +23,8 @@
                         <td>{{$ruolo->users_count}}</td>
                         <td></td>
                         <td class="text-end">
-                            <a class="btn btn-sm btn-warning" href="#">Modifica</a>
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma">Elimina</button>
+                            <a class="btn btn-sm btn-warning" href="{{route('editrole', $ruolo->id)}}">Modifica</a>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$ruolo->name}}','{{$ruolo->id}}')">Elimina</button>
                         </td>
 
                     </tr>
@@ -41,10 +41,10 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('eliminautente')}}" id="delete" method="POST">
+                <form action="{{route('roledelete')}}" id="delete" method="POST">
                     @csrf
                 <div class="modal-body">
-                    Confermi l'eliminazione dell'utente <span id="username"></span>
+                    Confermi l'eliminazione del ruolo <span id="username"></span>
                         <input type="hidden" value="" id="deleteid" name="deleteid">
                 </div>
                 <div class="modal-footer">

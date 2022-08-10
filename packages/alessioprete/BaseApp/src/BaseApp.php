@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use alessioprete\BaseApp\app\View\Components\Forms\input;
-
+use alessioprete\BaseApp\app\View\Components\Forms\checkbox;
 
 class BaseApp extends ServiceProvider
 {
@@ -37,6 +37,7 @@ class BaseApp extends ServiceProvider
         $this->registerMiddlewareGroup($this->app->router);
         $this->publishFiles();
         Blade::component('input', input::class);
+        Blade::component('checkbox', checkbox::class);
     }
 
     public function loadConfigs()

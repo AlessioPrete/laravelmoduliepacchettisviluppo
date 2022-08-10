@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -53,14 +54,15 @@ class AdminController extends Controller
 
     public function creaUtente()
     {
-        return view(alessioprete_view('newuser'));
+        $ruoli = Role::all();
+        return view(alessioprete_view('newuser'), compact('ruoli'));
     }
 
     public function registraUtente(Request $request)
     {
         $valida = Validator::make($request->all(),[
             'name' => 'required',
-            'email' => ['required', 'unique:users', 'email'],
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required|same:password'
         ]);
@@ -75,6 +77,8 @@ class AdminController extends Controller
             $registra->password = Hash::make($request->password);
             $registra->save();
 
+            $registra->syncRoles($request->role);
+
             return redirect('admin/users');
         }
     }
@@ -88,15 +92,18 @@ class AdminController extends Controller
     public function editUtente($id)
     {
         $user = User::find($id);
-        return view(alessioprete_view('edituser'), compact('user'));
+        $user->getRoleNames();
+        $ruoli = Role::all();
+        return view(alessioprete_view('edituser'), compact('user', 'ruoli'));
     }
 
     public function editUtenteStore(Request $request)
     {
+        $registra = User::find($request->id);
         if (isset($request->password)) {
             $valida = Validator::make($request->all(),[
                 'name' => 'required',
-                'email' => ['required', 'unique:users', 'email'],
+                'email' => 'required|email|unique:users,email,'.$request->id,
                 'password' => 'required|confirmed',
                 'password_confirmation' => 'required|same:password'
             ]);
@@ -104,12 +111,11 @@ class AdminController extends Controller
                 return redirect()->back()->withErrors($valida)->withInput();
             }
             else {
-                $registra = User::find($request->id);
                 $registra->name = $request->name;
                 $registra->email = $request->email;
                 $registra->password = Hash::make($request->password);
                 $registra->save();
-
+                $registra->syncRoles($request->role);
                 return redirect('admin/users');
             }
         }
@@ -117,7 +123,7 @@ class AdminController extends Controller
         else {
             $valida = Validator::make($request->all(),[
                 'name' => 'required',
-                'email' => ['required', 'unique:users', 'email']
+                'email' => 'required|email|unique:users,email,'.$request->id
             ]);
 
             if ($valida->fails()) {
@@ -128,7 +134,7 @@ class AdminController extends Controller
                 $registra->name = $request->name;
                 $registra->email = $request->email;
                 $registra->save();
-
+                $registra->syncRoles($request->role);
                 return redirect('admin/users');
             }
         }

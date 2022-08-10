@@ -32,6 +32,10 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('roles', [RolePermissionController::class, 'roleShow'])->name('roles');
     Route::get('newrole', [RolePermissionController::class, 'roleNew'])->name('newrole');
     Route::post('newrolestore', [RolePermissionController::class, 'roleNewStore'])->name('newrolestore');
+    Route::get('roleedit/{id}', [RolePermissionController::class, 'roleEdit'])->name('editrole');
+    Route::post('roleeditstore', [RolePermissionController::class, 'roleEditStore'])->name('editrolestore');
+    Route::post('deleterole', [RolePermissionController::class, 'roleDelete'])->name('roledelete');
+
     Route::get('permission', [RolePermissionController::class, 'permissionShow'])->name('permission');
     Route::get('newpermission', [RolePermissionController::class, 'permissionNew'])->name('newpermission');
     Route::post('newpermissionstore', [RolePermissionController::class, 'permissionNewStore'])->name('newpermissionstore');

@@ -49,19 +49,38 @@ class RolePermissionController extends Controller
 
     public function roleShow()
     {
+        $permessi = Permission::all();
         $ruoli = Role::withCount('users')->get();
-        return view(alessioprete_view('roles'), compact('ruoli'));
+        return view(alessioprete_view('auth.roles.roles'), compact('ruoli'));
         //return dd($ruoli);
     }
 
     public function roleNew()
     {
-        return view(alessioprete_view('newrole'));
+        $permessi = Permission::all();
+        return view(alessioprete_view('auth.roles.newrole'), compact('permessi'));
     }
 
     public function roleNewStore(Request $request)
     {
-        Role::create(['name' => $request->name]);
-        return redirect('admin/permission');
+        Role::create(['name' => $request->name, 'guard_name' => 'aprete']);
+        return redirect('admin/roles');
+    }
+
+    public function roleEdit($id)
+    {
+        $role = Role::find($id);
+        return view(alessioprete_view('auth.roles.editrole'), compact('role'));
+    }
+
+    public function roleEditStore(Request $request)
+    {
+        Role::find($request->id)->update(['name' => $request->name]);
+        return redirect('admin/roles');
+    }
+    public function roleDelete(Request $request)
+    {
+        Role::destroy($request->deleteid);
+        return redirect('admin/roles');
     }
 }
