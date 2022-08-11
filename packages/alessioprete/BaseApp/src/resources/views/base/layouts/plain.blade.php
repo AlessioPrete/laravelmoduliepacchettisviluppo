@@ -3,18 +3,14 @@
 <head>
 @include(alessioprete_view('inc.head'))
 </head>
-<body class="bg-light min-vh-100 d-flex flex-row align-items-center">
-
-@yield('header')
-
-<div class="container">
+<body>
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
     @yield('content')
 </div>
 
-<footer class="app-footer sticky-footer">
+<footer class="footer mt-auto py-3 bg-light" style="">
     @include('alessioprete::inc.footer')
 </footer>
-
 @yield('before_scripts')
 @stack('before_scripts')
 

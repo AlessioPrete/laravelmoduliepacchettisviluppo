@@ -8,6 +8,7 @@ class checkbox extends Component
 {
     public $label;
     public $check;
+    public $name;
 
     /**
      * Create a new component instance.
@@ -15,10 +16,11 @@ class checkbox extends Component
      * @param $label
      * @param $field
      */
-    public function __construct($label, $check = null)
+    public function __construct($label, $check = null, $name = null)
     {
         $this->label = $label;
         $this->check = $check;
+        $this->name = $name;
     }
 
     /**

@@ -21,12 +21,15 @@
                         <td>{{$ruolo->id}}</td>
                         <td>{{$ruolo->name}}</td>
                         <td>{{$ruolo->users_count}}</td>
-                        <td></td>
+                        <td>
+                            @foreach($ruolo->permissions as $permesso)
+                                <span class="badge-sm text-bg-secondary">{{$permesso->name}}</span>
+                            @endforeach
+                        </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-warning" href="{{route('editrole', $ruolo->id)}}">Modifica</a>
                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$ruolo->name}}','{{$ruolo->id}}')">Elimina</button>
                         </td>
-
                     </tr>
                 @endforeach
                 </tbody>

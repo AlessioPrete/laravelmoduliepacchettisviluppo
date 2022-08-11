@@ -50,8 +50,8 @@ class RolePermissionController extends Controller
     public function roleShow()
     {
         $ruoli = Role::withCount('users')->with('permissions')->get();
-        //return view(alessioprete_view('auth.roles.roles'), compact('ruoli'));
-        return dd($ruoli);
+        return view(alessioprete_view('auth.roles.roles'), compact('ruoli'));
+        //return dd($ruoli);
     }
 
     public function roleNew()
@@ -77,7 +77,9 @@ class RolePermissionController extends Controller
 
     public function roleEditStore(Request $request)
     {
-        Role::find($request->id)->update(['name' => $request->name]);
+        $role = Role::find($request->id);
+        $role->syncPermissions($request->role);
+        $role->update(['name' => $request->name]);
         return redirect('admin/roles');
     }
     public function roleDelete(Request $request)

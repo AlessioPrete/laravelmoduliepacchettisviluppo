@@ -8,7 +8,7 @@
                     @csrf
                     <x-input label="Ruolo" field="name" ph="Nome" value="{{$role->name}}"></x-input>
                     @if(isset($permessi))
-                        <div class="card mb-2 gap-3">
+                        <div class="card mb-2">
                             <div class="card-header">Permessi</div>
                             <div class="card-body">
                                 <div class="row">

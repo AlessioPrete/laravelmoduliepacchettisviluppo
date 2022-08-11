@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
@@ -48,14 +49,15 @@ class AdminController extends Controller
 
     public function usersShow()
     {
-        $utenti = User::with('roles')->get();
+        $utenti = User::with('roles')->with('permissions')->get();
         return view(alessioprete_view('users'), compact('utenti'));
     }
 
     public function creaUtente()
     {
         $ruoli = Role::all();
-        return view(alessioprete_view('newuser'), compact('ruoli'));
+        $permessi = Permission::all();
+        return view(alessioprete_view('newuser'), compact('ruoli', 'permessi'));
     }
 
     public function registraUtente(Request $request)
@@ -77,8 +79,8 @@ class AdminController extends Controller
             $registra->password = Hash::make($request->password);
             $registra->save();
 
-            $registra->syncRoles($request->role);
-
+            $registra->syncRoles($request->ruolo);
+            $registra->syncPermissions($request->permesso);
             return redirect('admin/users');
         }
     }
@@ -93,8 +95,11 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         $user->getRoleNames();
+        $user->getAllPermissions();
         $ruoli = Role::all();
-        return view(alessioprete_view('edituser'), compact('user', 'ruoli'));
+        $permessi = Permission::all();
+        return view(alessioprete_view('edituser'), compact('user', 'ruoli', 'permessi'));
+        //return dd($user);
     }
 
     public function editUtenteStore(Request $request)
@@ -116,6 +121,7 @@ class AdminController extends Controller
                 $registra->password = Hash::make($request->password);
                 $registra->save();
                 $registra->syncRoles($request->role);
+                $registra->syncPermissions($request->permesso);
                 return redirect('admin/users');
             }
         }
@@ -135,6 +141,7 @@ class AdminController extends Controller
                 $registra->email = $request->email;
                 $registra->save();
                 $registra->syncRoles($request->role);
+                $registra->syncPermissions($request->permesso);
                 return redirect('admin/users');
             }
         }

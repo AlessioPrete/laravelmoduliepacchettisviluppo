@@ -27,7 +27,11 @@
                                 <span class="badge-sm text-bg-info">{{$role->name}}</span>
                             @endforeach
                         </td>
-                        <td></td>
+                        <td>
+                            @foreach($user->permissions as $permesso)
+                                <span class="badge-sm text-bg-secondary">{{$permesso->name}}</span>
+                            @endforeach
+                        </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-warning" href="{{route('editUser', $user->id)}}">Modifica</a>
                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$user->name}}', '{{$user->id}}')">Elimina</button>
