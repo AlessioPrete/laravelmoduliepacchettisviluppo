@@ -4,6 +4,12 @@
 {{--        <span class="badge badge-sm bg-info ms-auto">NEW</span>--}}
     </a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{route('tasks')}}">
+        <i class="nav-icon icon-note-list1"></i> Tasks
+        {{--        <span class="badge badge-sm bg-info ms-auto">NEW</span>--}}
+    </a>
+</li>
 <li class="nav-title">Contenuti Sito</li>
 <li class="nav-item"><a class="nav-link" href="#">
         <i class="icon-menu nav-icon"></i> Menu</a></li>

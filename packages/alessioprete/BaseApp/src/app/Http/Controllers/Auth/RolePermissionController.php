@@ -27,12 +27,12 @@ class RolePermissionController extends Controller
     public function permissionShow()
     {
         $permessi = Permission::all();
-        return view(alessioprete_view('permission'), compact('permessi'));
+        return view(alessioprete_view('auth.permissions.permission'), compact('permessi'));
     }
 
     public function permissionNew()
     {
-        return view(alessioprete_view('newpermission'));
+        return view(alessioprete_view('auth.permissions.newpermission'));
     }
 
     public function permissionNewStore(Request $request)
@@ -46,6 +46,7 @@ class RolePermissionController extends Controller
         Permission::find($request->deleteid)->delete();
         return redirect('admin/permission');
     }
+    //Manca EditPermissions
 
     public function roleShow()
     {

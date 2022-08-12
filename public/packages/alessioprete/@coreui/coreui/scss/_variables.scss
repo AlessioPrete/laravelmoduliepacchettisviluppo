@@ -633,10 +633,10 @@ $font-family-code:            var(--#{$prefix}font-monospace) !default;
 
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
-$font-size-root:              null !default;
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-root:              .85rem !default;
+$font-size-base:              .85rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm:                $font-size-base * .875 !default;
-$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-lg:                $font-size-base * 1 !default;
 
 $font-weight-lighter:         lighter !default;
 $font-weight-light:           300 !default;
@@ -1860,7 +1860,7 @@ $sidebar-backdrop-opacity:                 .5 !default;
 
 $sidebar-nav-title-padding-y:              .75rem !default;
 $sidebar-nav-title-padding-x:              1rem !default;
-$sidebar-nav-title-margin-top:             1rem !default;
+$sidebar-nav-title-margin-top:             .25rem !default;
 $sidebar-nav-title-color:                  $medium-emphasis-inverse !default;
 $sidebar-nav-title-transition:             height .15s, margin .15s !default;
 
@@ -1886,7 +1886,7 @@ $sidebar-nav-link-disabled-color:          $disabled-inverse !default;
 $sidebar-nav-link-disabled-icon-color:     $sidebar-nav-link-icon-color !default;
 
 $sidebar-nav-icon-width:                   4rem !default;
-$sidebar-nav-icon-height:                  1.25rem !default;
+$sidebar-nav-icon-height:                  1rem !default;
 $sidebar-nav-icon-font-size:               $sidebar-nav-icon-height !default;
 
 $sidebar-nav-group-bg:                     rgba(0, 0, 0, .2) !default;

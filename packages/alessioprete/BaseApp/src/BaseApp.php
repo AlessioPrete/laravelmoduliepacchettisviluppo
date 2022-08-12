@@ -129,6 +129,10 @@ class BaseApp extends ServiceProvider
         $this->publishes([
             base_path().'/vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName('create_permission_tables.php'),
         ], 'migrations');
+
+        $this->publishes([
+            __DIR__.'/stubs/tasks.php.stub' => $this->getMigrationFileName('tasks.php'),
+        ], 'migrations');
     }
     protected function getMigrationFileName($migrationFileName): string
     {

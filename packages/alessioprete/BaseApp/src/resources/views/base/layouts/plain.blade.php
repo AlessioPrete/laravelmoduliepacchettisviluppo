@@ -8,7 +8,7 @@
     @yield('content')
 </div>
 
-<footer class="footer mt-auto py-3 bg-light" style="">
+<footer class="footer footer-app mt-auto py-3 bg-light" style="">
     @include('alessioprete::inc.footer')
 </footer>
 @yield('before_scripts')
