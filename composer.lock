@@ -5412,7 +5412,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/alessioprete/BaseApp",
-                "reference": "2cef57ba24f5f1d814cc7112535f6071abedf472"
+                "reference": "2f72f16c460bae590bb783286d92eda6220f8fa5"
             },
             "require": {
                 "creativeorange/gravatar": "~1.0",
@@ -5456,7 +5456,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/alessioprete/PackageGenerator",
-                "reference": "18f339493de597a1989be8f6db5858f76c2ac209"
+                "reference": "4cd86c2ddc966a3799391fd9c95ae0f883d33278"
             },
             "type": "library",
             "extra": {
@@ -8368,5 +8368,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }

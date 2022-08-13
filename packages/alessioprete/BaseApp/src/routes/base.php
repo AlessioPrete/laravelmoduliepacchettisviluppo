@@ -3,7 +3,7 @@
 use alessioprete\BaseApp\app\Http\Controllers\AdminController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
-use alessioprete\BaseApp\app\Http\Controllers\tasks;
+use alessioprete\BaseApp\app\Http\Controllers\tasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,8 +42,10 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::post('newpermissionstore', [RolePermissionController::class, 'permissionNewStore'])->name('newpermissionstore');
     Route::post('deletepermission', [RolePermissionController::class, 'permissionDelete'])->name('permissiondelete');
 
-    Route::get('tasks', [tasks::class, 'tasksShow'])->name('tasks');
-    Route::get('newtask', [Tasks::class, 'newtask'])->name('newtask');
+    Route::get('tasks', [tasksController::class, 'tasksShow'])->name('tasks');
+    Route::get('newtask', [tasksController::class, 'newtask'])->name('newtask');
+    Route::post('storenewtask', [tasksController::class, 'storeNewTask'])->name('storenewtask');
+    Route::post('deletetask', [tasksController::class, 'deleteTask'])->name('deletetask');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');

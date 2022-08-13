@@ -138,3 +138,11 @@ if (! function_exists('alessioprete_users_have_email')) {
         return \Schema::hasColumn($user->getTable(), 'email');
     }
 }
+if (!function_exists('formatDate')){
+    function formatDate($date = '', $format = 'd-m-Y'){
+        if($date == '' || $date == null)
+            return;
+
+        return date($format,strtotime($date));
+    }
+}
