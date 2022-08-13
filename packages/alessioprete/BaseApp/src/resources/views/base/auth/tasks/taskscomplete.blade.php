@@ -2,7 +2,7 @@
 @section('content')
     <div class="btn-toolbar mb-2">
         <a class="btn btn-primary" href="{{route('newtask')}}"><i class="icon icon-plus1"></i> Nuova Nota</a>
-        <a class="btn btn-success ms-2" href="{{route('taskscompletati')}}">Task Completati</a>
+        <a class="btn btn-success ms-2" href="{{route('tasks')}}">Task Aperti</a>
     </div>
     <div class="container-lg">
         <div class="row">
@@ -11,7 +11,7 @@
                 <tr>
                     <th><input type="checkbox" name="check-all" id="check-all"></th>
                     <th>Titolo</th>
-                    <th class="text-end">Scadenza</th>
+                    <th class="text-end">Completata</th>
                     <th class="text-end">Azioni</th>
                 </tr>
                 </thead>
@@ -25,9 +25,8 @@
                             <td>
                                 {{$task->titolo}}
                             </td>
-                            <td class="text-end" @if($task->scadenza < today()) style="color: red;" @endif>{{formatDate($task->scadenza)}}</td>
+                            <td class="text-end">{{formatDate($task->updated_at)}}</td>
                             <td class="text-end" id="tasks-table">
-                                <button class="btn btn-sm btn-success" onclick="trasferisciCompletato('{{$task->titolo}}','{{$task->id}}')" data-bs-toggle="modal" data-bs-target="#taskcompletato">Completato</button>
                                 <button class="btn btn-sm btn-warning">Modifica</button>
                                 <button class="btn btn-sm btn-danger" onclick="transferdata('{{$task->titolo}}','{{$task->id}}')" data-bs-toggle="modal" data-bs-target="#eliminaConferma">Elimina</button>
                             </td>

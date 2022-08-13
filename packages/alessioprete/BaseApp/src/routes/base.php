@@ -46,6 +46,8 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('newtask', [tasksController::class, 'newtask'])->name('newtask');
     Route::post('storenewtask', [tasksController::class, 'storeNewTask'])->name('storenewtask');
     Route::post('deletetask', [tasksController::class, 'deleteTask'])->name('deletetask');
+    Route::post('completatask', [tasksController::class, 'completeTask'])->name('completatask');
+    Route::get('taskscompletati', [tasksController::class, 'tasksCompleteShow'])->name('taskscompletati');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
