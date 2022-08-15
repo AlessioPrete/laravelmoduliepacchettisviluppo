@@ -11,7 +11,7 @@
     </a>
 </li>
 <li class="nav-title">Contenuti Sito</li>
-<li class="nav-item"><a class="nav-link" href="#">
+<li class="nav-item"><a class="nav-link" href="{{route('menumanager')}}">
         <i class="icon-menu nav-icon"></i> Menu</a></li>
 {{--<li class="nav-group"><a class="nav-link nav-group-toggle" href="#">--}}
 {{--        <svg class="nav-icon">--}}

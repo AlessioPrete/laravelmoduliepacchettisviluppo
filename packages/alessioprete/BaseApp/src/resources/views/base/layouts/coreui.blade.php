@@ -28,5 +28,6 @@
 <script src="{{asset('packages/alessioprete/base/js/liga.js')}}">
 </script>
 @yield('script')
+@stack('scripts')
 </body>
 </html>

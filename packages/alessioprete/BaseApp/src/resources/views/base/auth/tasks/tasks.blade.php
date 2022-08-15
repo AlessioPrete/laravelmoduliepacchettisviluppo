@@ -20,7 +20,7 @@
                         <tr>
                             <td>
                                 <input type="checkbox" name="check[]">
-                                @if(isset($task->contenuto))<i class="icon icon-circle-down px-2" data-bs-toggle="collapse" data-bs-target="#r{{$task->id}}"></i>@endif
+                                @if(isset($task->contenuto))<i class="icon icon-circle-down px-2" data-bs-toggle="collapse" data-bs-target="#r{{$task->id}}" aria-expanded="true" aria-controls="r{{$task->id}}"></i>@endif
                             </td>
                             <td>
                                 {{$task->titolo}}
@@ -28,7 +28,7 @@
                             <td class="text-end" @if($task->scadenza < today()) style="color: red;" @endif>{{formatDate($task->scadenza)}}</td>
                             <td class="text-end" id="tasks-table">
                                 <button class="btn btn-sm btn-success" onclick="trasferisciCompletato('{{$task->titolo}}','{{$task->id}}')" data-bs-toggle="modal" data-bs-target="#taskcompletato">Completato</button>
-                                <button class="btn btn-sm btn-warning">Modifica</button>
+                                <a class="btn btn-sm btn-warning" href="{{route('edittask', $task->id)}}">Modifica</a>
                                 <button class="btn btn-sm btn-danger" onclick="transferdata('{{$task->titolo}}','{{$task->id}}')" data-bs-toggle="modal" data-bs-target="#eliminaConferma">Elimina</button>
                             </td>
                         </tr>

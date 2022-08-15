@@ -48,6 +48,19 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::post('deletetask', [tasksController::class, 'deleteTask'])->name('deletetask');
     Route::post('completatask', [tasksController::class, 'completeTask'])->name('completatask');
     Route::get('taskscompletati', [tasksController::class, 'tasksCompleteShow'])->name('taskscompletati');
+    Route::get('edittask/{id}', [tasksController::class, 'editTask'])->name('edittask');
+    Route::post('storeedittask', [tasksController::class, 'storeedittask'])->name('storeedittask');
+
+    Route::post('addcustommenu', array('as' => 'haddcustommenu', 'uses' => 'MenuController@addcustommenu'));
+    Route::post('deleteitemmenu', array('as' => 'hdeleteitemmenu', 'uses' => 'MenuController@deleteitemmenu'));
+    Route::post('deletemenug', array('as' => 'hdeletemenug', 'uses' => 'MenuController@deletemenug'));
+    Route::post('createnewmenu', 'MenuController@createnewmenu')->name('hcreatenewmenu');
+    Route::post('generatemenucontrol', array('as' => 'hgeneratemenucontrol', 'uses' => 'MenuController@generatemenucontrol'));
+    Route::post('updateitem', array('as' => 'hupdateitem', 'uses' => 'MenuController@updateitem'));
+
+    Route::get('menumanager', function (){
+        return view(alessioprete_view('auth.menumanager'));
+    })->name('menumanager');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');

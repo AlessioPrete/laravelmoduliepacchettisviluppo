@@ -2,6 +2,7 @@
 
 namespace alessioprete\BaseApp;
 
+use alessioprete\BaseApp\app\Http\Controllers\MenuController;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
@@ -9,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use alessioprete\BaseApp\app\View\Components\Forms\input;
 use alessioprete\BaseApp\app\View\Components\Forms\checkbox;
+use Illuminate\Foundation\AliasLoader;
 
 class BaseApp extends ServiceProvider
 {
@@ -20,8 +22,16 @@ class BaseApp extends ServiceProvider
      */
     public function register()
     {
+        $this->app->booting(function (){
+            $loader = AliasLoader::getInstance();
+            $loader->alias('APMenu', APMenu::class);
+        });
         // register the helper functions
         $this->loadHelpers();
+        $this->app->bind('alessioprete-menu', function () {
+            return new APMenu();
+        });
+        $this->app->make(MenuController::class);
     }
 
     /**
@@ -129,7 +139,9 @@ class BaseApp extends ServiceProvider
         $this->publishes([
             base_path().'/vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName('create_permission_tables.php'),
         ], 'migrations');
-
+        $this->publishes([
+            __DIR__.'/stubs/CreateMenuAndItemsTable.php.stub' => $this->getMigrationFileName('CreateMenuAndItemsTable.php'),
+        ], 'migrations');
         $this->publishes([
             __DIR__.'/stubs/tasks.php.stub' => $this->getMigrationFileName('tasks.php'),
         ], 'migrations');

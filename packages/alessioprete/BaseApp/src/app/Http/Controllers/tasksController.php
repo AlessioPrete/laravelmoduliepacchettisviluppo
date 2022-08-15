@@ -18,7 +18,6 @@ class tasksController extends Controller
         $tasks = $utente->tasks->where('complete', '=', 0);
         return view(alessioprete_view('auth.tasks.tasks'), compact('tasks'));
     }
-
     public function tasksCompleteShow()
     {
         $utente = User::find(alessioprete_auth()->user()->id);
@@ -44,10 +43,25 @@ class tasksController extends Controller
         tasks::destroy($request->deleteid);
         return redirect('admin/tasks');
     }
-
     public function completeTask(Request $request)
     {
         tasks::find($request->completaid)->update(['complete' => 1]);
+        return redirect('admin/tasks');
+    }
+
+    public function editTask($id)
+    {
+        $task = tasks::find($id);
+        return view(alessioprete_view('auth.tasks.edittask'), compact('task'));
+    }
+
+    public function storeedittask(Request $request)
+    {
+        $task = tasks::find($request->id);
+        $task->titolo = $request->titolo;
+        $task->contenuto = $request->contenuto;
+        $task->scadenza = $request->scadenza;
+        $task->save();
         return redirect('admin/tasks');
     }
 }
