@@ -36,7 +36,7 @@
 {{--    </ul>--}}
 {{--</li>--}}
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="{{route('pages')}}" class="nav-link">
         <i class="icon-document-text1 nav-icon"></i>
         Pagine
     </a>

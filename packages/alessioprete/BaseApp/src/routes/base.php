@@ -3,6 +3,7 @@
 use alessioprete\BaseApp\app\Http\Controllers\AdminController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
+use alessioprete\BaseApp\app\Http\Controllers\pagesController;
 use alessioprete\BaseApp\app\Http\Controllers\tasksController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,8 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('menumanager', function (){
         return view(alessioprete_view('auth.menumanager'));
     })->name('menumanager');
+
+    Route::get('pages', [pagesController::class, 'index'])->name('pages');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');

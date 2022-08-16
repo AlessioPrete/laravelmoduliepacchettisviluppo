@@ -142,6 +142,7 @@ class BaseApp extends ServiceProvider
         $this->publishes([
             __DIR__.'/stubs/CreateMenuAndItemsTable.php.stub' => $this->getMigrationFileName('CreateMenuAndItemsTable.php'),
         ], 'migrations');
+        $this->publishes([ __DIR__.'/stubs/CreatePagesTable.php.stub' => $this->getMigrationFileName('CreatePagesTable.php')], 'migration');
         $this->publishes([
             __DIR__.'/stubs/tasks.php.stub' => $this->getMigrationFileName('tasks.php'),
         ], 'migrations');
