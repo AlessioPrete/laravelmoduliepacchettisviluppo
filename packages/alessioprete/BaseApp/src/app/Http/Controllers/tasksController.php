@@ -12,6 +12,10 @@ use function Symfony\Component\Translation\t;
 
 class tasksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(alessioprete_middleware());
+    }
     public function tasksShow()
     {
         $utente = User::find(alessioprete_auth()->user()->id);

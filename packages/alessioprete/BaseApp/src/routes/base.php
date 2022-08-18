@@ -20,9 +20,9 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
 {
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
     Route::post('register', [RegisterController::class, 'register']);
-    Route::get('login', 'auth\LoginController@showLoginForm')->name('auth.login');
-    Route::post('login', 'auth\LoginController@login');
-    Route::get('logout', 'auth\LoginController@logout')->name('logout');
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::get('users', [AdminController::class, 'usersShow'])->name('utenti');
     Route::get('creautente', [AdminController::class, 'creaUtente'])->name('creautente');

@@ -10,6 +10,10 @@ use alessioprete\BaseApp\app\Models\MenuItems;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(alessioprete_middleware());
+    }
 
     public function createnewmenu()
     {
