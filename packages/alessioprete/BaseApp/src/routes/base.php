@@ -21,7 +21,7 @@ Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middl
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
     Route::post('register', [RegisterController::class, 'register']);
     //Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
-    Route::get('login', [\alessioprete\BaseApp\app\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+    Route::get('login', [\alessioprete\BaseApp\app\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('auth.login');
     Route::post('login', 'Auth\LoginController@login');
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
