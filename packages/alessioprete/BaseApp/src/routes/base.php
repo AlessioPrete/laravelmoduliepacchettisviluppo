@@ -1,6 +1,7 @@
 <?php
 
 use alessioprete\BaseApp\app\Http\Controllers\AdminController;
+use alessioprete\BaseApp\app\Http\Controllers\Auth\LoginController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
 use alessioprete\BaseApp\app\Http\Controllers\pagesController;
@@ -16,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'alessioprete\BaseApp\app\Http\Controllers', 'middleware' => config('alessioprete.base.web_middleware', 'web'), 'prefix' => 'admin'], function ()
+Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'middleware' => config('alessioprete.base.web_middleware', 'web'), 'prefix' => 'admin'], function ()
 {
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
     Route::post('register', [RegisterController::class, 'register']);
     //Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
-    Route::get('login', [\alessioprete\BaseApp\app\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('auth.login');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('auth.login');
+    Route::post('login', '\Auth\LoginController@login');
+    Route::get('logout', '\Auth\LoginController@logout')->name('logout');
 
     Route::get('users', [AdminController::class, 'usersShow'])->name('utenti');
     Route::get('creautente', [AdminController::class, 'creaUtente'])->name('creautente');
