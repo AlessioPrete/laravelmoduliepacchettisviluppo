@@ -66,6 +66,7 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     })->name('menumanager');
 
     Route::get('pages', [pagesController::class, 'index'])->name('pages');
+    Route::get('newpage', [pagesController::class, 'createPage'])->name('newpage');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');

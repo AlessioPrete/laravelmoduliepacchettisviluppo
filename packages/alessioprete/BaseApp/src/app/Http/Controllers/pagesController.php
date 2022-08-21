@@ -13,11 +13,11 @@ class pagesController extends Controller
     }
     public function index()
     {
-        return view(alessioprete_view('auth.pages'));
+        return view(alessioprete_view('auth.pages.pages'));
     }
 
     public function createPage()
     {
-
+        return view(alessioprete_view('auth.pages.newpage'));
     }
 }

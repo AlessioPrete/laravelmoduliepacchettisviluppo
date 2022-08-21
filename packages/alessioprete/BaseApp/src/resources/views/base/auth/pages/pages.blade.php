@@ -1,7 +1,7 @@
 @extends(alessioprete_view('layouts.coreui'))
 @section('content')
     <div class="btn-toolbar mb-2">
-        <a class="btn btn-primary" href="{{route('newrole')}}"><i class="icon icon-plus1"></i> Nuova pagina</a>
+        <a class="btn btn-primary" href="{{route('newpage')}}"><i class="icon icon-plus1"></i> Nuova pagina</a>
     </div>
     <div class="container-lg">
         <div class="row">
