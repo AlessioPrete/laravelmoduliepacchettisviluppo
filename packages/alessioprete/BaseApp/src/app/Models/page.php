@@ -22,7 +22,7 @@ class page extends Model
     {
         return [
             'slug' => [
-                'source' => 'slug_or_title',
+                'source' => 'slug',
             ],
         ];
     }

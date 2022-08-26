@@ -5,6 +5,7 @@ namespace alessioprete\BaseApp\app\Http\Controllers;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use alessioprete\BaseApp\app\Models\page;
 use App\Http\Controllers\Controller;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -32,7 +33,7 @@ class pagesController extends Controller
         $page->title = $request->title;
         $page->name = 'prova';
         $page->template = rand(16, 16);
-        $page->slug = $page->title;
+        $page->slug = SlugService::createSlug(page::class, 'slug', $request->title);
         $page->save();
         return redirect()->route('pages');
     }
