@@ -3,7 +3,7 @@
     <div class="container-lg">
         <div class="card">
             <div class="card-body row">
-                <form action="#" method="POST">
+                <form action="{{route('storepage')}}" method="POST">
                     @csrf
                     <x-input label="Titolo" field="title" ph="Titolo"></x-input>
                     @if(isset($templates))

@@ -67,6 +67,7 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
 
     Route::get('pages', [pagesController::class, 'index'])->name('pages');
     Route::get('newpage', [pagesController::class, 'createPage'])->name('newpage');
+    Route::post('storepage', [pagesController::class, 'storePage'])->name('storepage');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
@@ -74,6 +75,7 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     Route::get('sandbox', function (){
         return view(alessioprete_view('sandbox'));
     });
+    Route::get('sandbox2', [pagesController::class, 'sandbox'])->name('sandbox2');
     Route::get('iconmoon', function (){
         return view(alessioprete_view('iconmoon'));
     });
