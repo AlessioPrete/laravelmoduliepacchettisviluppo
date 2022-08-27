@@ -13,7 +13,7 @@
                                 <div class="row">
                                     Banana
                                     @foreach($templates as $e)
-                                        {{$e['name']}} <br>
+                                        {{$e->name}} <br>
                                     @endforeach
                                 </div>
                             </div>

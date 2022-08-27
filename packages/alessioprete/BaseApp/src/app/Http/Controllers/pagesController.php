@@ -5,6 +5,7 @@ namespace alessioprete\BaseApp\app\Http\Controllers;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use alessioprete\BaseApp\app\Models\page;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
@@ -37,7 +38,6 @@ class pagesController extends Controller
                 'store' => 'content'
             ]
     ]];
-    public $name1 = ['Alice', 'Bob', 'John'];
     public function __construct()
     {
         $this->middleware(alessioprete_middleware());
@@ -49,9 +49,11 @@ class pagesController extends Controller
 
     public function createPage()
     {
-        $templates = $this->template;
-        $json = json_encode($templates);
-        return view(alessioprete_view('auth.pages.newpage'), compact('templates', 'json'));
+        $json = json_encode($this->template);
+        //$templates = json_decode($json);
+        $templates = (object) $this->template;
+        //return view(alessioprete_view('auth.pages.newpage'), compact('templates', 'json'));
+        dd($templates);
     }
 
     public function storePage(Request $request)
