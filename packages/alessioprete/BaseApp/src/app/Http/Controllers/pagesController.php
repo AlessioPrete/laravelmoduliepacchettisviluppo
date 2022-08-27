@@ -12,7 +12,32 @@ use Illuminate\Support\Str;
 
 class pagesController extends Controller
 {
-
+    public $template = [
+        [
+            'name' => 'prova_banana',
+            'title' => 'ciao',
+            'elements' => [
+                'field' => 'nome',
+                'label' => 'etichetta',
+                'value' => '',
+                'visible' => '',
+                'type' => 'input',
+                'store' => 'content'
+            ]
+        ],
+        [
+            'name' => 'prova_banana2',
+            'title' => 'ciao2',
+            'elements' => [
+                'field' => 'nome',
+                'label' => 'etichetta',
+                'value' => '',
+                'visible' => '',
+                'type' => 'input',
+                'store' => 'content'
+            ]
+    ]];
+    public $name1 = ['Alice', 'Bob', 'John'];
     public function __construct()
     {
         $this->middleware(alessioprete_middleware());
@@ -24,7 +49,9 @@ class pagesController extends Controller
 
     public function createPage()
     {
-        return view(alessioprete_view('auth.pages.newpage'));
+        $templates = $this->template;
+        $json = json_encode($templates);
+        return view(alessioprete_view('auth.pages.newpage'), compact('templates', 'json'));
     }
 
     public function storePage(Request $request)

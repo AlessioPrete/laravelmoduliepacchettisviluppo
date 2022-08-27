@@ -11,10 +11,9 @@
                             <div class="card-header">Template</div>
                             <div class="card-body">
                                 <div class="row">
-                                    @foreach($templates as $template)
-                                        <div class="col-3">
-                                            <x-checkbox label="{{$template->name}}"></x-checkbox>
-                                        </div>
+                                    Banana
+                                    @foreach($templates as $e)
+                                        {{$e['name']}} <br>
                                     @endforeach
                                 </div>
                             </div>
@@ -24,5 +23,8 @@
                 </form>
             </div>
         </div>
+        @php
+            echo $json ?? '';
+        @endphp
     </div>
 @endsection
