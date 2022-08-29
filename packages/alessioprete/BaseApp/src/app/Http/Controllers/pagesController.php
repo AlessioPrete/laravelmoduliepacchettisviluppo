@@ -50,10 +50,11 @@ class pagesController extends Controller
     public function createPage()
     {
         $json = json_encode($this->template);
-        //$templates = json_decode($json);
-        $templates = (object) $this->template;
+        $templates = json_decode($json);
+        //$templates = (object) $this->template;
+        $templates2 = $templates->toArray();
         //return view(alessioprete_view('auth.pages.newpage'), compact('templates', 'json'));
-        dd($templates);
+        dd($templates2);
     }
 
     public function storePage(Request $request)
