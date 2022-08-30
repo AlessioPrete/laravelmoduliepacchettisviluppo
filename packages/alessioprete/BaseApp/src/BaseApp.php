@@ -3,6 +3,7 @@
 namespace alessioprete\BaseApp;
 
 use alessioprete\BaseApp\app\Http\Controllers\MenuController;
+use alessioprete\BaseApp\app\View\Components\Forms\select;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
@@ -48,6 +49,7 @@ class BaseApp extends ServiceProvider
         $this->publishFiles();
         Blade::component('input', input::class);
         Blade::component('checkbox', checkbox::class);
+        Blade::component('select', select::class);
     }
 
     public function loadConfigs()

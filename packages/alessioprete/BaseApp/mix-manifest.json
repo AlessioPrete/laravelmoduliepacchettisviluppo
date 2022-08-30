@@ -252,6 +252,7 @@
     "/public/packages/alessioprete/base/css/bundle.css.map": "/public/packages/alessioprete/base/css/bundle.css.map",
     "/public/packages/alessioprete/base/css/demoIconmoon.css": "/public/packages/alessioprete/base/css/demoIconmoon.css",
     "/public/packages/alessioprete/base/css/iconmoon.css": "/public/packages/alessioprete/base/css/iconmoon.css",
+    "/public/packages/alessioprete/base/css/menu.css": "/public/packages/alessioprete/base/css/menu.css",
     "/public/packages/alessioprete/base/fonts/CoreUI-Icons-Brand.eot": "/public/packages/alessioprete/base/fonts/CoreUI-Icons-Brand.eot",
     "/public/packages/alessioprete/base/fonts/CoreUI-Icons-Brand.svg": "/public/packages/alessioprete/base/fonts/CoreUI-Icons-Brand.svg",
     "/public/packages/alessioprete/base/fonts/CoreUI-Icons-Brand.ttf": "/public/packages/alessioprete/base/fonts/CoreUI-Icons-Brand.ttf",
@@ -273,5 +274,8 @@
     "/public/packages/alessioprete/base/js/bundle.js.map": "/public/packages/alessioprete/base/js/bundle.js.map",
     "/public/packages/alessioprete/base/js/demoIconmoon.js": "/public/packages/alessioprete/base/js/demoIconmoon.js",
     "/public/packages/alessioprete/base/js/liga.js": "/public/packages/alessioprete/base/js/liga.js",
+    "/public/packages/alessioprete/base/js/menu.js": "/public/packages/alessioprete/base/js/menu.js",
+    "/public/packages/alessioprete/base/js/script2.js": "/public/packages/alessioprete/base/js/script2.js",
+    "/public/packages/alessioprete/base/js/scripts.js": "/public/packages/alessioprete/base/js/scripts.js",
     "/public/robots.txt": "/public/robots.txt"
 }

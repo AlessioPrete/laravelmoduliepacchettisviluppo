@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 class pagesController extends Controller
 {
     public $template = [
+        0 =>
         [
             'name' => 'prova_banana',
             'title' => 'ciao',
@@ -26,6 +27,7 @@ class pagesController extends Controller
                 'store' => 'content'
             ]
         ],
+        1 =>
         [
             'name' => 'prova_banana2',
             'title' => 'ciao2',
@@ -51,19 +53,23 @@ class pagesController extends Controller
     {
         $json = json_encode($this->template);
         $templates = json_decode($json);
-        //$templates = (object) $this->template;
-        $templates2 = $templates->toArray();
-        //return view(alessioprete_view('auth.pages.newpage'), compact('templates', 'json'));
-        dd($templates2);
+        $templates2 = (object) $this->template;
+        $templates3 = (array) $templates;
+        $item = ['a', 'name', 'b', 'c', 'd'];
+        return view(alessioprete_view('auth.pages.newpage'), compact('templates', 'json', 'templates2', 'templates3', 'item'));
+        //dd($templates, $templates2, $templates3);
     }
 
     public function storePage(Request $request)
     {
+
         $page = new page();
         $page->title = $request->title;
         $page->name = 'prova';
-        $page->template = rand(16, 16);
+        $page->template = $request->template;
         $page->slug = SlugService::createSlug(page::class, 'slug', $request->title);
+        $page->content = $request->content;
+        $page->extras = json_encode($request->only('meta', 'key', 'pippo'));
         $page->save();
         return redirect()->route('pages');
     }

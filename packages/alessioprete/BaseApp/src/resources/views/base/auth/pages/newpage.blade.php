@@ -5,20 +5,30 @@
             <div class="card-body row">
                 <form action="{{route('storepage')}}" method="POST">
                     @csrf
-                    <x-input label="Titolo" field="title" ph="Titolo"></x-input>
-                    @if(isset($templates))
+                        <div class="row">
+                            <div class="col-6">
+                                <x-input label="Titolo" field="title" ph="Titolo"></x-input>
+                            </div>
+                            <div class="col-6">
+                                <x-select label="prova" field="template" :item="$item"></x-select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                    <x-input label="meta" field="meta" ph="meta"></x-input>
+                    <x-input label="key" field="key" ph="key"></x-input>
+                    <x-input label="pippo" field="pippo" ph="pippo"></x-input>
                         <div class="card mb-2 gap-3">
                             <div class="card-header">Template</div>
                             <div class="card-body">
                                 <div class="row">
-                                    Banana
-                                    @foreach($templates as $e)
-                                        {{$e->name}} <br>
-                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    @endif
+
                     <button type="submit" class="btn btn-primary float-end">Salva</button>
                 </form>
             </div>
