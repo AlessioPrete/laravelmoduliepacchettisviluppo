@@ -67,7 +67,10 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
 
     Route::get('pages', [pagesController::class, 'index'])->name('pages');
     Route::get('newpage', [pagesController::class, 'createPage'])->name('newpage');
+    Route::get('editpage/{id}',[pagesController::class, 'editPage'])->name('editpage');
+    Route::post('storeeditpage', [pagesController::class, 'storeedit'])->name('storepageedit');
     Route::post('storepage', [pagesController::class, 'storePage'])->name('storepage');
+    Route::post('deletepage', [pagesController::class, 'destroyPage'])->name('destroypage');
 
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
@@ -81,3 +84,13 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     });
 });
 
+Route::group(['middleware' => 'web'], function (){
+    Route::get('/', function () { return view(alessioprete_view('frontend.index')); });
+    Route::get('/{slug}', [pagesController::class, 'pagina']);
+    Route::get('/ilmaestro', function () { return view('ilmaestro'); })->name('ilmaestro');
+    Route::get('/team', function (){ return view('ilteam');})->name('ilteam');
+    Route::get('/categorie', function () {return view('categorie');})->name('categorie');
+    Route::get('/categorie-griglia', function () { return view('categorie_griglia');})->name('categoriegriglia');
+    Route::get('/prodotto', function () { return view('prodotto');})->name('prodotto');
+    Route::get('pasticcerie', function () {return view('pasticcerie');})->name('pasticcerie');
+});

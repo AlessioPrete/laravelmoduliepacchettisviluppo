@@ -25,6 +25,7 @@ if (! function_exists('alessioprete_view')) {
         return $returnView;
     }
 }
+
 if (! function_exists('alessioprete_authentication_column')) {
     /**
      * Return the username column name.

@@ -10,6 +10,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Prophecy\Exception\Prediction\AggregateException;
 
 class pagesController extends Controller
 {
@@ -40,13 +41,26 @@ class pagesController extends Controller
                 'store' => 'content'
             ]
     ]];
+
     public function __construct()
     {
         $this->middleware(alessioprete_middleware());
     }
+
+    public function pagina($page)
+    {
+        $pagina = page::whereSlug($page)->first();
+        if (!$pagina)
+        {
+            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+        }
+        return view(alessioprete_view('frontend.index'), compact('pagina'));
+    }
+
     public function index()
     {
-        return view(alessioprete_view('auth.pages.pages'));
+        $pagine = page::paginate(10);
+        return view(alessioprete_view('auth.pages.pages'), compact('pagine'));
     }
 
     public function createPage()
@@ -60,6 +74,26 @@ class pagesController extends Controller
         //dd($templates, $templates2, $templates3);
     }
 
+    public function editPage($id)
+    {
+        $pagina = page::find($id);
+        $editjson = json_decode($pagina->extras);
+        $item = ['principale', 'secondario'];
+        return view(alessioprete_view('auth.pages.editpage'), compact('pagina','item','editjson'));
+    }
+
+    public function storeedit(Request $request)
+    {
+        $update = page::find($request->id);
+        $update->title = $request->title;
+        $update->slug = SlugService::createSlug(page::class, 'slug', $request->title);
+        $update->template = $request->template;
+        $update->content = $request->content;
+        $update->extras = json_encode($request->only('description', 'key'));
+        $update->save();
+        return redirect()->route('pages');
+    }
+
     public function storePage(Request $request)
     {
 
@@ -69,9 +103,15 @@ class pagesController extends Controller
         $page->template = $request->template;
         $page->slug = SlugService::createSlug(page::class, 'slug', $request->title);
         $page->content = $request->content;
-        $page->extras = json_encode($request->only('meta', 'key', 'pippo'));
+        $page->extras = json_encode($request->only('description', 'key'));
         $page->save();
         return redirect()->route('pages');
+    }
+
+    public function destroyPage(Request $request)
+    {
+        page::destroy($request->deleteid);
+        return redirect('admin/pages');
     }
 
     public function sandbox()
