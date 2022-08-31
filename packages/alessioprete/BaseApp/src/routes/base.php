@@ -86,8 +86,8 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
 
 Route::group(['middleware' => 'web'], function (){
     Route::get('/', function () { return view(alessioprete_view('frontend.index')); });
-    Route::get('/{slug}', [pagesController::class, 'pagina']);
-    Route::get('/ilmaestro', function () { return view('ilmaestro'); })->name('ilmaestro');
+    //Route::get('/{slug}', [pagesController::class, 'pagina']);
+    Route::get('/ilmaestro', function () { return view(alessioprete_view('frontend.ilmaestro')); })->name('ilmaestro');
     Route::get('/team', function (){ return view('ilteam');})->name('ilteam');
     Route::get('/categorie', function () {return view('categorie');})->name('categorie');
     Route::get('/categorie-griglia', function () { return view('categorie_griglia');})->name('categoriegriglia');
