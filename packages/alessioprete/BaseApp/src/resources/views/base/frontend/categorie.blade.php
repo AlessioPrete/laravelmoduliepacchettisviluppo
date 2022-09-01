@@ -1,8 +1,8 @@
-@extends('layouts.base')
+@extends(alessioprete_view('frontend.layouts.base'))
 
 @section('content')
-    @component('components.header')@endcomponent
-    <div class="ps-section--hero"><img src="images/hero/01.jpg" alt="">
+    @component(alessioprete_view('frontend.components.header'))@endcomponent
+    <div class="ps-section--hero"><img src="packages/alessioprete/images/hero/01.jpg" alt="">
         <div class="ps-section__content text-center">
             <h3 class="ps-section__title">LIEVITATI</h3>
             <div class="ps-breadcrumb">
@@ -20,9 +20,9 @@
                     <div class="ps-shop-listing pt-80 pb-40">
                         <div class="ps-shop-features">
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="images/product-banner/012x.jpg" alt="">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="packages/alessioprete/images/product-banner/012x.jpg" alt="">
                                 </div>
-                                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 "><img class="mb-30" src="images/product-banner/022x.jpg" alt="">
+                                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 "><img class="mb-30" src="packages/alessioprete/images/product-banner/022x.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="ps-shop">
                             <div class="ps-product--list ps-product--list-large">
-                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="{{route('prodotto')}}"></a><img src="images/cake/img-cake-2.jpg" alt="">
+                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="{{route('prodotto')}}"></a><img src="packages/alessioprete/images/cake/img-cake-2.jpg" alt="">
                                     <div class="ps-badge"><span>50%</span></div>
                                 </div>
                                 <div class="ps-product__content">
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="ps-product--list ps-product--list-large">
-                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="images/cake/img-cake-3.jpg" alt="">
+                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="packages/alessioprete/images/cake/img-cake-3.jpg" alt="">
                                     <div class="ps-badge"><span>50%</span></div>
                                 </div>
                                 <div class="ps-product__content">
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="ps-product--list ps-product--list-large">
-                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="images/cake/img-cake-4.jpg" alt="">
+                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="packages/alessioprete/images/cake/img-cake-4.jpg" alt="">
                                     <div class="ps-badge"><span>50%</span></div>
                                 </div>
                                 <div class="ps-product__content">
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="ps-product--list ps-product--list-large">
-                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="images/cake/img-cake-5.jpg" alt="">
+                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="packages/alessioprete/images/cake/img-cake-5.jpg" alt="">
                                     <div class="ps-badge"><span>50%</span></div>
                                 </div>
                                 <div class="ps-product__content">
@@ -151,7 +151,7 @@
                                 </div>
                             </div>
                             <div class="ps-product--list ps-product--list-large">
-                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="images/cake/img-cake-6.jpg" alt="">
+                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="packages/alessioprete/images/cake/img-cake-6.jpg" alt="">
                                     <div class="ps-badge"><span>50%</span></div>
                                 </div>
                                 <div class="ps-product__content">
@@ -176,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="ps-product--list ps-product--list-large">
-                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="images/cake/img-cake-1.jpg" alt="">
+                                <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="packages/alessioprete/images/cake/img-cake-1.jpg" alt="">
                                     <div class="ps-badge"><span>50%</span></div>
                                 </div>
                                 <div class="ps-product__content">
@@ -213,7 +213,8 @@
                         </div>
                     </div>
                 </div>
-                @component('components.sidebar') @endcomponent
+                <x-sidebar :categorie="$categorie"></x-sidebar>
+{{--                @component(alessioprete_view('frontend.components.sidebar')) @endcomponent--}}
             </div>
         </div>
     </div>

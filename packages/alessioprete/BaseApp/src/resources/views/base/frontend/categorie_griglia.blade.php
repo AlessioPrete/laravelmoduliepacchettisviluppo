@@ -1,7 +1,7 @@
-@extends('layouts.base')
+@extends(alessioprete_view('frontend.layouts.base'))
 
 @section('content')
-    @component('components.header')@endcomponent
+    @component(alessioprete_view('frontend.components.header'))@endcomponent
     <div class="ps-section--hero"><img src="images/hero/01.jpg" alt="">
         <div class="ps-section__content text-center">
             <h3 class="ps-section__title">LIEVITATI</h3>
@@ -212,7 +212,7 @@
                         </div>
                     </div>
                 </div>
-                @component('components.sidebar') @endcomponent
+                @component(alessioprete_view('frontend.components.sidebar')) @endcomponent
             </div>
         </div>
     </div>

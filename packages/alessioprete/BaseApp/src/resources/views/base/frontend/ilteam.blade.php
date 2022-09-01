@@ -1,8 +1,8 @@
-@extends('layouts.base')
+@extends(alessioprete_view('frontend.layouts.base'))
 
 @section('content')
-    @component('components.header')@endcomponent
-    <div class="ps-section--hero"><img src="images/team/Staff.jpg" alt="">
+    @component(alessioprete_view('frontend.components.header'))@endcomponent
+    <div class="ps-section--hero"><img src="packages/alessioprete/images/team/Staff.jpg" alt="">
         <div class="ps-section__content text-center">
             <h3 class="ps-section__title">Mani d'oro</h3>
         </div>
@@ -21,7 +21,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 "></div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                         <article class="ps-people ps-people--2">
-                            <div class="ps-people__thumbnail"><a class="ps-people__overlay" href="#"></a><img src="images/team/gioeseba.jpg" alt=""></div>
+                            <div class="ps-people__thumbnail"><a class="ps-people__overlay" href="#"></a><img src="packages/alessioprete/images/team/gioeseba.jpg" alt=""></div>
                             <div class="ps-people__content">
                                 <h4>Giorgio e Sebastiano</h4><span class="ps-people__position">CEO - Founder</span>
                                 <p>bla bla bla bla.</p>
@@ -32,7 +32,7 @@
                 </div>
         </div>
     </section>
-    <div class="ps-section--hero"><img src="images/team/joinus.jpg" alt="">
+    <div class="ps-section--hero"><img src="packages/alessioprete/images/team/joinus.jpg" alt="">
         <div class="ps-section__content text-center">
             <h3 class="ps-section__title">Lavora con noi</h3>
         </div>
@@ -79,7 +79,7 @@
 
     <div class="ps-section ps-section--partner">
         <div class="container">
-            <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="40" data-owl-nav="false" data-owl-dots="false" data-owl-animate-in="" data-owl-animate-out="" data-owl-item="6" data-owl-item-xs="3" data-owl-item-sm="4" data-owl-item-md="5" data-owl-item-lg="6" data-owl-nav-left="&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;" data-owl-nav-right="&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;"><a href="#"><img src="images/partner/1.png" alt=""></a><a href="#"><img src="images/partner/2.png" alt=""></a><a href="#"><img src="images/partner/3.png" alt=""></a><a href="#"><img src="images/partner/4.png" alt=""></a><a href="#"><img src="images/partner/5.png" alt=""></a><a href="#"><img src="images/partner/6.png" alt=""></a><a href="#"><img src="images/partner/7.png" alt=""></a><a href="#"><img src="images/partner/8.png" alt=""></a>
+            <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="40" data-owl-nav="false" data-owl-dots="false" data-owl-animate-in="" data-owl-animate-out="" data-owl-item="6" data-owl-item-xs="3" data-owl-item-sm="4" data-owl-item-md="5" data-owl-item-lg="6" data-owl-nav-left="&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;" data-owl-nav-right="&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;"><a href="#"><img src="packages/alessioprete/images/partner/1.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/2.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/3.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/4.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/5.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/6.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/7.png" alt=""></a><a href="#"><img src="packages/alessioprete/images/partner/8.png" alt=""></a>
             </div>
         </div>
     </div>

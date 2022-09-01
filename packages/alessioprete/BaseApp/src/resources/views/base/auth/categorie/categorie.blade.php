@@ -1,7 +1,7 @@
 @extends(alessioprete_view('layouts.coreui'))
 @section('content')
     <div class="btn-toolbar mb-2">
-        <a class="btn btn-primary" href="{{route('newpage')}}"><i class="icon icon-plus1"></i> Nuova pagina</a>
+        <a class="btn btn-primary" href="{{route('nuovacategoria')}}"><i class="icon icon-plus1"></i> Nuova categoria</a>
     </div>
     <div class="container-lg">
         <div class="row">
@@ -9,29 +9,27 @@
                 <thead class="table-dark">
                 <tr>
                     <th>id</th>
-                    <th>Titolo</th>
+                    <th>Categoria</th>
                     <th>Slug</th>
-                    <th>Status</th>
                     <th class="text-end">Azioni</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($pagine as $pagina)
-                        <tr>
-                            <td>{{$pagina->id}}</td>
-                            <td>{{$pagina->title}}</td>
-                            <td><a href="{{url('pagina/'.$pagina->slug)}}">{{$pagina->slug}}</a></td>
-                            <td>{{$pagina->template}}</td>
-                            <td class="text-end">
-                                <a class="btn btn-sm btn-warning" href="{{route('editpage', $pagina->id)}}">Modifica</a>
-                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$pagina->title}}', '{{$pagina->id}}')">Elimina</button>
-                            </td>
-                        </tr>
+                    @foreach($categorie as $categoria)
+                    <tr>
+                        <td>{{$categoria->id}}</td>
+                        <td>{{$categoria->name}}</td>
+                        <td>{{$categoria->slug}}</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-warning" href="{{route('editcategoria', $categoria->id)}}">Modifica</a>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaConferma" onclick="transferdata('{{$categoria->name}}', '{{$categoria->id}}')">Elimina</button>
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        {{$pagine->links('vendor.pagination.bootstrap-4')}}
+
     </div>
 
     <!-- Modal -->
@@ -42,10 +40,10 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('destroypage')}}" id="delete" method="POST">
+                <form action="{{route('destroycategoria')}}" id="delete" method="POST">
                     @csrf
                     <div class="modal-body">
-                        Confermi l'eliminazione della pagina <span id="pagina"></span>
+                        Confermi l'eliminazione della pagina <span id="categoria"></span>
                         <input type="hidden" value="" id="deleteid" name="deleteid">
                     </div>
                     <div class="modal-footer">
@@ -61,7 +59,7 @@
     <script>
         function transferdata(a,b)
         {
-            $('#pagina').html(a);
+            $('#categoria').html(a);
             $('#deleteid').val(b);
         }
     </script>

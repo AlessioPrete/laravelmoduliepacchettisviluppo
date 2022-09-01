@@ -13,13 +13,12 @@
             <div class="ps-widget__content">
                 <ul class="ps-list--circle">
                     <li><a href="product-listing.html"><span class="circle"></span>tutti (321)</a></li>
-                    <li class="current"><a href="product-listing.html"><span class="circle"></span>Lievitati’</a></li>
-                    <li><a href="product-listing.html"><span class="circle"></span>Macaron</a></li>
-                    <li><a href="product-listing.html"><span class="circle"></span>Cake</a></li>
-                    <li><a href="product-listing.html"><span class="circle"></span>Biscotti</a></li>
-                    <li><a href="product-listing.html"><span class="circle"></span>Torte</a></li>
-                    <li><a href="product-listing.html"><span class="circle"></span>Cioccolato</a></li>
-                    <li><a href="product-listing.html"><span class="circle"></span>Spalmabili</a></li>
+                    @foreach($categorie as $categoria)
+                        <li><a href="{{$categoria->slug}}"><span class="circle"></span>{{$categoria->name}}</a></li>
+                    @endforeach
+
+{{--                    <li class="current"><a href="product-listing.html"><span class="circle"></span>Lievitati’</a></li>--}}
+
                 </ul>
             </div>
         </aside>

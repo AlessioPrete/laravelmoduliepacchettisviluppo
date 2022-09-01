@@ -4,6 +4,7 @@ namespace alessioprete\BaseApp;
 
 use alessioprete\BaseApp\app\Http\Controllers\MenuController;
 use alessioprete\BaseApp\app\View\Components\Forms\select;
+use alessioprete\BaseApp\app\View\Components\sidebar;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
@@ -50,6 +51,7 @@ class BaseApp extends ServiceProvider
         Blade::component('input', input::class);
         Blade::component('checkbox', checkbox::class);
         Blade::component('select', select::class);
+        Blade::component('sidebar', sidebar::class);
     }
 
     public function loadConfigs()

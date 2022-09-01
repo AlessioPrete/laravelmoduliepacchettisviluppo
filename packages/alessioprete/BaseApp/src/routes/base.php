@@ -4,7 +4,9 @@ use alessioprete\BaseApp\app\Http\Controllers\AdminController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\LoginController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RegisterController;
 use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
+use alessioprete\BaseApp\app\Http\Controllers\categorieController;
 use alessioprete\BaseApp\app\Http\Controllers\pagesController;
+use alessioprete\BaseApp\app\Http\Controllers\prodottiController;
 use alessioprete\BaseApp\app\Http\Controllers\tasksController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +74,20 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     Route::post('storepage', [pagesController::class, 'storePage'])->name('storepage');
     Route::post('deletepage', [pagesController::class, 'destroyPage'])->name('destroypage');
 
+    Route::get('categorie', [categorieController::class, 'index'])->name('admincategorie');
+    Route::get('nuovacategoria', [categorieController::class, 'nuovacategoria'])->name('nuovacategoria');
+    Route::post('storecategoria', [categorieController::class, 'storecategoria'])->name('storecategoria');
+    Route::get('editcategoria/{id}', [categorieController::class, 'editcategoria'])->name('editcategoria');
+    Route::post('destroycategoria', [categorieController::class, 'destroycategoria'])->name('destroycategoria');
+    Route::post('storeeditcategoria', [categorieController::class, 'storeedit'])->name('storeeditcategoria');
+
+    Route::get('prdotti', [prodottiController::class, 'index'])->name('prodotti');
+    Route::get('nuovoprodotto', [prodottiController::class, 'newProdotto'])->name('nuovoprodotto');
+    Route::get('editprodotto/{id}', [prodottiController::class, 'editprodotto'])->name('modificaprodotto');
+    Route::post('storenuovoprodotto', [prodottiController::class, 'storePrdodotto'])->name('storeprodotto');
+    Route::post('destroyprodotto', [prodottiController::class, 'destroyprodotto'])->name('destroyprodotto');
+    Route::post('updateprodotto', [prodottiController::class, 'storemodificaprodotto'])->name('storemodificaprodotto');
+
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('', [AdminController::class, 'dashboard'])->name('home');
 
@@ -86,11 +102,15 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
 
 Route::group(['middleware' => 'web'], function (){
     Route::get('/', function () { return view(alessioprete_view('frontend.index')); });
-    //Route::get('/{slug}', [pagesController::class, 'pagina']);
+    Route::get('/pagina/{slug}', [pagesController::class, 'pagina']);
     Route::get('/ilmaestro', function () { return view(alessioprete_view('frontend.ilmaestro')); })->name('ilmaestro');
-    Route::get('/team', function (){ return view('ilteam');})->name('ilteam');
-    Route::get('/categorie', function () {return view('categorie');})->name('categorie');
-    Route::get('/categorie-griglia', function () { return view('categorie_griglia');})->name('categoriegriglia');
-    Route::get('/prodotto', function () { return view('prodotto');})->name('prodotto');
-    Route::get('pasticcerie', function () {return view('pasticcerie');})->name('pasticcerie');
+    Route::get('/team', function (){ return view(alessioprete_view('frontend.ilteam')); })->name('ilteam');
+    Route::get('/categorie', function () {
+        $categorie = \alessioprete\BaseApp\app\Models\categorie::all();
+        return view(alessioprete_view('frontend.categorie'), compact('categorie'));
+    })->name('categorie');
+    Route::get('/categorie-griglia', function () { return view(alessioprete_view('frontend.categorie_griglia'));})->name('categoriegriglia');
+    Route::get('/prodotto', function () { return view(alessioprete_view('frontend.prodotto'));})->name('prodotto');
+    Route::get('/prodotto/{slug}', [prodottiController::class, 'viewprodotto']);
+    Route::get('/pasticcerie', function () {return view(alessioprete_view('frontend.pasticcerie'));})->name('pasticcerie');
 });

@@ -41,6 +41,18 @@
         Pagine
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{route('admincategorie')}}" class="nav-link">
+        <i class="icon-clipboard-list1 nav-icon"></i>
+        Categorie
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{route('prodotti')}}" class="nav-link">
+        <i class="icon-box5 nav-icon"></i>
+        Prodotti
+    </a>
+</li>
 <li class="nav-title">Impostazioni</li>
 <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">Autorizzazioni</a>
     <ul class="nav-group-items">
