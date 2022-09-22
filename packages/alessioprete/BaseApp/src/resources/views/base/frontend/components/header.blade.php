@@ -16,7 +16,7 @@
     <nav class="navigation">
         <div class="container">
             <div class="menu-toggle"><span></span></div>
-            <a class="ps-logo" href="{{url('/')}}"><img src="packages/alessioprete/images/logoQuadrato.jpg" alt=""></a>
+            <a class="ps-logo" href="{{url('/')}}"><img src="{{asset('packages/alessioprete/images/logoQuadrato.jpg')}}" alt=""></a>
             <div class="navigation__left">
                 <ul class="menu menu--left">
                     <li class="menu-item-has-children">

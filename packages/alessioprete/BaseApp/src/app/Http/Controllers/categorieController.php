@@ -29,6 +29,20 @@ class categorieController extends Controller
         $nuova = new categorie();
         $nuova->name = $request->title;
         $nuova->slug = $request->slug;
+        if($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('/images/categorie/'),$image_name);
+            $image_path = '/images/categorie'.$image_name;
+            $nuova->image = $image_path;
+        }
+        if($request->hasFile('testa')) {
+            $image_testa = $request->file('testa');
+            $image_name_testa = $image_testa->getClientOriginalName();
+            $image_testa->move(public_path('/images/categorie/'),$image_name_testa);
+            $image_path_testa = '/images/categorie'.$image_name_testa;
+            $nuova->headimage = $image_path_testa;
+        }
         $nuova->save();
         return redirect()->route('admincategorie');
     }
@@ -44,6 +58,20 @@ class categorieController extends Controller
         $update = categorie::find($request->id);
         $update->name = $request->title;
         $update->slug = $request->slug;
+        if($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('/images/categorie/'),$image_name);
+            $image_path = '/images/categorie'.$image_name;
+            $update->image = $image_path;
+        }
+        if($request->hasFile('testa')) {
+            $image_testa = $request->file('testa');
+            $image_name_testa = $image_testa->getClientOriginalName();
+            $image_testa->move(public_path('/images/categorie/'),$image_name_testa);
+            $image_path_testa = '/images/categorie'.$image_name_testa;
+            $update->headimage = $image_path_testa;
+        }
         $update->save();
         return redirect()->route('admincategorie');
     }

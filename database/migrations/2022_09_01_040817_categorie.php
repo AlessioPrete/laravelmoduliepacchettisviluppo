@@ -17,6 +17,8 @@ class Categorie extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->string('image')->nullable();
+            $table->string('headimage')->nullable();
             $table->timestamps();
         });
     }

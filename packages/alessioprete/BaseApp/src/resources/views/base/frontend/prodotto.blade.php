@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
                         <header>
-                            <h3 class="ps-product__name">{{$prodotto->name}}</h3>
+                            <h3 class="ps-product__name">{{$prodotto->name ?? ''}}</h3>
                             <select class="ps-rating">
                                 <option value="1">1</option>
                                 <option value="1">2</option>
@@ -40,9 +40,9 @@
                                 <option value="1">4</option>
                                 <option value="5">5</option>
                             </select>
-                            <p class="ps-product__price">€ {{$prodotto->prezzo}} </p>
+                            <p class="ps-product__price">€ {{$prodotto->prezzo ?? ''}} </p>
                             <div class="ps-product__description">
-                                {{$prodotto->descrizione}}
+                                {{$prodotto->descrizione ?? ''}}
                             </div>
                             <div class="ps-product__meta">
                                 <p><span> Disponibilità: </span> In stock</p>

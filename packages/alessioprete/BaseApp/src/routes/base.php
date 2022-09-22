@@ -101,7 +101,9 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
 });
 
 Route::group(['middleware' => 'web'], function (){
-    Route::get('/', function () { return view(alessioprete_view('frontend.index')); });
+    Route::get('/', function () {
+        $categorie = \alessioprete\BaseApp\app\Models\categorie::all();
+        return view(alessioprete_view('frontend.index'), compact('categorie')); });
     Route::get('/pagina/{slug}', [pagesController::class, 'pagina']);
     Route::get('/ilmaestro', function () { return view(alessioprete_view('frontend.ilmaestro')); })->name('ilmaestro');
     Route::get('/team', function (){ return view(alessioprete_view('frontend.ilteam')); })->name('ilteam');
@@ -109,6 +111,11 @@ Route::group(['middleware' => 'web'], function (){
         $categorie = \alessioprete\BaseApp\app\Models\categorie::all();
         return view(alessioprete_view('frontend.categorie'), compact('categorie'));
     })->name('categorie');
+    Route::get('/categorie/{slug}', function ($slug) {
+        $categorie = \alessioprete\BaseApp\app\Models\categorie::all();
+        $categoria = \alessioprete\BaseApp\app\Models\categorie::where('slug', '=', $slug)->first();
+        return view(alessioprete_view('frontend.categorie'), compact('categorie', 'slug', 'categoria'));
+    })->name('categorieslug');
     Route::get('/categorie-griglia', function () { return view(alessioprete_view('frontend.categorie_griglia'));})->name('categoriegriglia');
     Route::get('/prodotto', function () { return view(alessioprete_view('frontend.prodotto'));})->name('prodotto');
     Route::get('/prodotto/{slug}', [prodottiController::class, 'viewprodotto']);

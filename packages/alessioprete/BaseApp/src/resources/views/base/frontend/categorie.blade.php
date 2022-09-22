@@ -2,13 +2,20 @@
 
 @section('content')
     @component(alessioprete_view('frontend.components.header'))@endcomponent
-    <div class="ps-section--hero"><img src="packages/alessioprete/images/hero/01.jpg" alt="">
+    <div class="ps-section--hero">
+        <img src="{{asset('images/categorie/01_alessio.jpg')}}" alt="">
         <div class="ps-section__content text-center">
-            <h3 class="ps-section__title">LIEVITATI</h3>
-            <div class="ps-breadcrumb">
+            <h3 class="ps-section__title">{{$categoria->name ?? ''}}</h3>
+            <div class="ps-breadcrumb" style="color: white;">
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Shop</li>
+                    <li><a href="{{url('/')}}">Home</a></li>
+                    @php
+                        $segments = '';
+                        foreach (Request::segments() as $segment) {
+                            $segments .= '/'.$segment;
+                            echo '<li><a href="'.$segments.'">'.$segment.'</a></li>';
+                        }
+                    @endphp
                 </ol>
             </div>
         </div>
@@ -20,9 +27,9 @@
                     <div class="ps-shop-listing pt-80 pb-40">
                         <div class="ps-shop-features">
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="packages/alessioprete/images/product-banner/012x.jpg" alt="">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="{{asset('packages/alessioprete/images/product-banner/012x.jpg')}}" alt="">
                                 </div>
-                                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 "><img class="mb-30" src="packages/alessioprete/images/product-banner/022x.jpg" alt="">
+                                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 "><img class="mb-30" src="{{asset('packages/alessioprete/images/product-banner/022x.jpg')}}" alt="">
                                 </div>
                             </div>
                         </div>
