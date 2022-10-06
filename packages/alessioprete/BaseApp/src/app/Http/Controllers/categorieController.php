@@ -33,14 +33,14 @@ class categorieController extends Controller
             $image = $request->file('immagine');
             $image_name = $image->getClientOriginalName();
             $image->move(public_path('/images/categorie/'),$image_name);
-            $image_path = '/images/categorie'.$image_name;
+            $image_path = '/images/categorie/'.$image_name;
             $nuova->image = $image_path;
         }
         if($request->hasFile('testa')) {
             $image_testa = $request->file('testa');
             $image_name_testa = $image_testa->getClientOriginalName();
             $image_testa->move(public_path('/images/categorie/'),$image_name_testa);
-            $image_path_testa = '/images/categorie'.$image_name_testa;
+            $image_path_testa = '/images/categorie/'.$image_name_testa;
             $nuova->headimage = $image_path_testa;
         }
         $nuova->save();
@@ -62,14 +62,14 @@ class categorieController extends Controller
             $image = $request->file('immagine');
             $image_name = $image->getClientOriginalName();
             $image->move(public_path('/images/categorie/'),$image_name);
-            $image_path = '/images/categorie'.$image_name;
+            $image_path = '/images/categorie/'.$image_name;
             $update->image = $image_path;
         }
         if($request->hasFile('testa')) {
             $image_testa = $request->file('testa');
             $image_name_testa = $image_testa->getClientOriginalName();
             $image_testa->move(public_path('/images/categorie/'),$image_name_testa);
-            $image_path_testa = '/images/categorie'.$image_name_testa;
+            $image_path_testa = '/images/categorie/'.$image_name_testa;
             $update->headimage = $image_path_testa;
         }
         $update->save();

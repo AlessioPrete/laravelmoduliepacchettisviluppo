@@ -14,7 +14,8 @@
         "prologue/alerts": "^1.0|^0.4",
         "creativeorange/gravatar": "~1.0",
         "spatie/laravel-permission": "^5",
-        "cviebrock/eloquent-sluggable": "^8.0"
+        "cviebrock/eloquent-sluggable": "^8.0",
+        "simplesoftwareio/simple-qrcode": "~2"
     },
     "autoload": {
         "psr-4": {
