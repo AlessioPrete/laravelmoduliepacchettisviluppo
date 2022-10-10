@@ -9,6 +9,7 @@ use alessioprete\BaseApp\app\Http\Controllers\pagesController;
 use alessioprete\BaseApp\app\Http\Controllers\prodottiController;
 use alessioprete\BaseApp\app\Http\Controllers\tasksController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,4 +121,10 @@ Route::group(['middleware' => 'web'], function (){
     Route::get('/prodotto', function () { return view(alessioprete_view('frontend.prodotto'));})->name('prodotto');
     Route::get('/prodotto/{slug}', [prodottiController::class, 'viewprodotto']);
     Route::get('/pasticcerie', function () {return view(alessioprete_view('frontend.pasticcerie'));})->name('pasticcerie');
+});
+
+Route::group(['middleware' => 'web', 'prefix' => 'qr'], function (){
+    Route::get('/{slug}', function ($slug){
+        return 'qrcode->'.$slug;
+    });
 });
