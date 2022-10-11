@@ -7,9 +7,9 @@ use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
 use alessioprete\BaseApp\app\Http\Controllers\categorieController;
 use alessioprete\BaseApp\app\Http\Controllers\pagesController;
 use alessioprete\BaseApp\app\Http\Controllers\prodottiController;
+use alessioprete\BaseApp\app\Http\Controllers\qrcode;
 use alessioprete\BaseApp\app\Http\Controllers\tasksController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     Route::post('destroycategoria', [categorieController::class, 'destroycategoria'])->name('destroycategoria');
     Route::post('storeeditcategoria', [categorieController::class, 'storeedit'])->name('storeeditcategoria');
 
-    Route::get('prdotti', [prodottiController::class, 'index'])->name('prodotti');
+    Route::get('prodotti', [prodottiController::class, 'index'])->name('prodotti');
     Route::get('nuovoprodotto', [prodottiController::class, 'newProdotto'])->name('nuovoprodotto');
     Route::get('editprodotto/{id}', [prodottiController::class, 'editprodotto'])->name('modificaprodotto');
     Route::post('storenuovoprodotto', [prodottiController::class, 'storePrdodotto'])->name('storeprodotto');
@@ -99,6 +99,8 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     Route::get('iconmoon', function (){
         return view(alessioprete_view('iconmoon'));
     });
+    Route::get('/qrcode', [qrcode::class, 'index'])->name('qrcode');
+    Route::get('/qrcode/new', [qrcode::class, 'seleziona'])->name('newqr');
 });
 
 Route::group(['middleware' => 'web'], function (){
@@ -123,6 +125,7 @@ Route::group(['middleware' => 'web'], function (){
     Route::get('/pasticcerie', function () {return view(alessioprete_view('frontend.pasticcerie'));})->name('pasticcerie');
 });
 
+//Route per QrCode
 Route::group(['middleware' => 'web', 'prefix' => 'qr'], function (){
     Route::get('/{slug}', function ($slug){
         return 'qrcode->'.$slug;

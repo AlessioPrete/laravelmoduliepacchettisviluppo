@@ -54,7 +54,7 @@
     </a>
 </li>
 <li class="nav-title">Impostazioni</li>
-<li class="nav-item"><a href="#" class="nav-link">Qr Code</a></li>
+<li class="nav-item"><a href="{{route('qrcode')}}" class="nav-link">Qr Code</a></li>
 <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">Autorizzazioni</a>
     <ul class="nav-group-items">
 

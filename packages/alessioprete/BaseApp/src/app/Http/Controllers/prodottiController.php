@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class prodottiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(alessioprete_middleware());
+    }
     public function index()
     {
         $prodotti = prodotto::all();
