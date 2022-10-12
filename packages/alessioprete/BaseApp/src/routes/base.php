@@ -100,6 +100,7 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
         return view(alessioprete_view('iconmoon'));
     });
     Route::get('/qrcode', [qrcode::class, 'index'])->name('qrcode');
+    Route::get('/qrcode/newurl', [qrcode::class, 'qrcodeurl'])->name('qrcodeurl');
     Route::get('/qrcode/new', [qrcode::class, 'seleziona'])->name('newqr');
 });
 

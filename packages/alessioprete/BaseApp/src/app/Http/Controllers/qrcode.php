@@ -16,4 +16,7 @@ class qrcode extends Controller
     public function seleziona() {
         return view(alessioprete_view('auth.qrcode.qrcodeScelta'));
     }
+    public function qrcodeurl() {
+        return view(alessioprete_view('auth.qrcode.qrcodenewurl'));
+    }
 }

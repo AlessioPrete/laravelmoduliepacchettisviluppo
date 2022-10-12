@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class input extends Component
 {
+    public $id;
     public $label;
     public $field;
     public $type;
@@ -18,8 +19,9 @@ class input extends Component
      * @param $label
      * @param $field
      */
-    public function __construct($label, $field, $type = 'text', $value = '', $ph = '...')
+    public function __construct($label, $field, $type = 'text', $value = '', $ph = '...', $id = '')
     {
+        $this->id = $id;
         $this->label = $label;
         $this->field = $field;
         $this->type = $type;
