@@ -33,8 +33,6 @@
         function ajaxQrCode()
         {
             url = $('#url').val();
-            prova = QrCode::encoding('UTF-8')->generate('Trasformami in un QrCode con simboli speciali ??!!');
-            console.log(prova);
             $('#qrcode').html('banana');
         }
     </script>

@@ -784,7 +784,7 @@
     </div>
         <div class="visible-print text-center">
             {!! QrCode::size(200)->encoding('UTF-8')->generate(url('https://www.google.it')); !!}
-            <p>Scansionami per tornare alla pagina principale.</p>
+            <p>Scansionami per tornare alla pagina principale 1.</p>
         </div>
     <div class="visible-print text-center">
         {!! QrCode::size(200)->geo(37.822214, -122.481769); !!}

@@ -783,12 +783,16 @@
         </table>
     </div>
         <div class="visible-print text-center">
-            {!! QrCode::size(200)->encoding('UTF-8')->generate(url('https://www.google.it')); !!}
+            {!! QrCode::format('svg')->size(200)->encoding('UTF-8')->generate(url('https://www.google.it')); !!}
             <p>Scansionami per tornare alla pagina principale.</p>
         </div>
     <div class="visible-print text-center">
-        {!! QrCode::size(200)->geo(37.822214, -122.481769); !!}
+        {!! QrCode::format('eps')->size(200)->geo(37.822214, -122.481769); !!}
         <p>Questo dovrebbe dare una posizione</p>
+    </div>
+    <div class="visible-print text-center">
+        <p>qualcosa {{$prova}}</p>
+        <img src="{{asset($prova)}}" alt="">
     </div>
 @endsection
 @section('script')

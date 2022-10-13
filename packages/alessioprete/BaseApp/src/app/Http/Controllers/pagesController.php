@@ -10,6 +10,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use mysql_xdevapi\CollectionModify;
 use Prophecy\Exception\Prediction\AggregateException;
 
 class pagesController extends Controller
@@ -116,7 +117,8 @@ class pagesController extends Controller
 
     public function sandbox()
     {
-        $prova = 'titolo di prova';
-        return Str::slug($prova);
+        \QrCode::format('png')->size(200)->generate(url('https://www.google.it'), public_path('images/qr.png'));
+        $prova = 'images/qr.png';
+        return view(alessioprete_view('sandbox2'), compact('prova'));
     }
 }
