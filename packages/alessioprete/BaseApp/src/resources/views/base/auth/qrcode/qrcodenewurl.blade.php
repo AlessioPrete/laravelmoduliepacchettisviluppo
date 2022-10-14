@@ -26,6 +26,7 @@
 @section('script')
     <script>
         $("#url").on("change paste keyup", function() {
+
             if ($('#url').val() != '') {
                 $('#genera').prop('disabled', false);
             }
@@ -33,7 +34,7 @@
         function ajaxQrCode()
         {
             url = $('#url').val();
-            $('#qrcode').html('banana');
+            $('#qrcode').html('ciao');
         }
     </script>
 @endsection
