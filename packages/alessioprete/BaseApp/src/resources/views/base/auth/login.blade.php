@@ -27,7 +27,7 @@
                                     <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="password" placeholder="Password">
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback">
-                                        <strong>{{ $errors ?? ''->first('password') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                     @endif
                                 </div>
