@@ -16,8 +16,7 @@
 
                         <input type="file" name="qr" style="display: none;">
                     </div>
-                    <button  type="submit" class="btn btn-primary float-end" disabled>Salva</button>
-                    <button id="genera" type="button" class="btn btn-primary float-end mx-2" disabled onclick="ajaxQrCode()">Genera</button>
+                    <button id="genera" type="submit" class="btn btn-primary float-end mx-2" disabled>Genera</button>
                 </form>
             </div>
         </div>
@@ -31,10 +30,5 @@
                 $('#genera').prop('disabled', false);
             }
         });
-        function ajaxQrCode()
-        {
-            url = $('#url').val();
-            $('#qrcode').html('ciao');
-        }
     </script>
 @endsection

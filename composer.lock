@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6831e5203a76a7921051ed23d109062",
+    "content-hash": "4ac96a32271221c798a79cc51d74913a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8408,8 +8408,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "alessioprete/packagegenerator": 20,
-        "alessioprete/baseapp": 20
+        "alessioprete/baseapp": 20,
+        "alessioprete/packagegenerator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

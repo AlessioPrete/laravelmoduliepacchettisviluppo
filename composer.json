@@ -14,12 +14,12 @@
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
-        "alessioprete/packagegenerator": "dev-master",
         "alessioprete/baseapp": "dev-master",
+        "alessioprete/packagegenerator": "dev-master",
         "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "^1.16",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10"

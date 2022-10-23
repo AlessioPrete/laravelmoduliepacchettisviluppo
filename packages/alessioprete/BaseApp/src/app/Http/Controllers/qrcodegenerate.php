@@ -3,8 +3,10 @@
 namespace alessioprete\BaseApp\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class qrcode extends Controller
+class qrcodegenerate extends Controller
 {
     public function __construct()
     {
@@ -18,5 +20,10 @@ class qrcode extends Controller
     }
     public function qrcodeurl() {
         return view(alessioprete_view('auth.qrcode.qrcodenewurl'));
+    }
+
+    public function store_qrSite(Request $request)
+    {
+        QrCode::generate(url($request->url), public_path('images/'.$request->title.'.svg'));
     }
 }

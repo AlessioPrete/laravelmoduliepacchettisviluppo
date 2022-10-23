@@ -7,7 +7,7 @@ use alessioprete\BaseApp\app\Http\Controllers\Auth\RolePermissionController;
 use alessioprete\BaseApp\app\Http\Controllers\categorieController;
 use alessioprete\BaseApp\app\Http\Controllers\pagesController;
 use alessioprete\BaseApp\app\Http\Controllers\prodottiController;
-use alessioprete\BaseApp\app\Http\Controllers\qrcode;
+use alessioprete\BaseApp\app\Http\Controllers\qrcodegenerate;
 use alessioprete\BaseApp\app\Http\Controllers\tasksController;
 use Illuminate\Support\Facades\Route;
 
@@ -99,9 +99,10 @@ Route::group(['namespace' => '\alessioprete\BaseApp\app\Http\Controllers', 'midd
     Route::get('iconmoon', function (){
         return view(alessioprete_view('iconmoon'));
     });
-    Route::get('/qrcode', [qrcode::class, 'index'])->name('qrcode');
-    Route::get('/qrcode/newurl', [qrcode::class, 'qrcodeurl'])->name('qrcodeurl');
-    Route::get('/qrcode/new', [qrcode::class, 'seleziona'])->name('newqr');
+    Route::get('/qrcode', [qrcodegenerate::class, 'index'])->name('qrcode');
+    Route::get('/qrcode/newurl', [qrcodegenerate::class, 'qrcodeurl'])->name('qrcodeurl');
+    Route::get('/qrcode/new', [qrcodegenerate::class, 'seleziona'])->name('newqr');
+    Route::post('/qrcode/storenew', [qrcodegenerate::class, 'store_qrSite'])->name('storepage');
 });
 
 Route::group(['middleware' => 'web'], function (){
