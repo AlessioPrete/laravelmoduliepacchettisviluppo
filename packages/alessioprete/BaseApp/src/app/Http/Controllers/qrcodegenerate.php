@@ -24,6 +24,7 @@ class qrcodegenerate extends Controller
 
     public function store_qrSite(Request $request)
     {
-        QrCode::generate(url($request->url), public_path('images/'.$request->title.'.svg'));
+        QrCode::generate($request->url, public_path('images/'.$request->title.'.svg'));
+        return back();
     }
 }
