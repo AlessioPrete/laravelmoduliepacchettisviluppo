@@ -20,7 +20,7 @@ class Qrcode extends Migration
             $table->string('type');
             $table->longText('img');
             $table->timestamps();
-    }
+    });}
 
     /**
      * Reverse the migrations.
